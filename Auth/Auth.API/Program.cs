@@ -1,9 +1,11 @@
 using System.Text;
 using Auth.API.Middlewares;
 using Auth.BLL.Interfaces;
+using Auth.BLL.Interfaces.Management;
 using Auth.BLL.Interfaces.Tokens;
 using Auth.BLL.Mapping;
 using Auth.BLL.Services;
+using Auth.BLL.Services.Management;
 using Auth.BLL.Services.Tokens;
 using Auth.DAL.Context;
 using Auth.DAL.Interfaces;
@@ -63,6 +65,9 @@ builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IUserManagementRepository, UserManagementRepository>();
 builder.Services.AddScoped<IBearerTokenManagement, BearerTokenManagement>();
+builder.Services.AddScoped<IUserManagementService, UserManagementService>();
+builder.Services.AddHttpContextAccessor();
+
 
 
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Auth.BLL.DTOs;
 using Auth.BLL.Interfaces;
+using Auth.BLL.Interfaces.Management;
 using Auth.BLL.Interfaces.Tokens;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,12 +16,14 @@ namespace Auth.API.Controllers
     {
         private readonly IAuthService _authService;
         private readonly IBearerTokenManagement _bearerTokenManagement;
+        private readonly IUserManagementService _userManagementService;
 
 
-        public AuthController(IAuthService authService, IBearerTokenManagement bearerTokenManagement)
+        public AuthController(IAuthService authService, IBearerTokenManagement bearerTokenManagement, IUserManagementService userManagementService)
         {
             _authService = authService;
             _bearerTokenManagement = bearerTokenManagement;
+            _userManagementService = userManagementService;
         }
 
         [HttpPost("Register")]
@@ -62,6 +65,24 @@ namespace Auth.API.Controllers
             catch (Exception ex)
             {
                 return StatusCode(50, ex.Message);
+            }
+        }
+
+        [HttpGet("me")]
+        public async Task<IActionResult> Me()
+        {
+            try
+            {
+                var user = _userManagementService.GetUserIdFromContext();
+                return Ok(user);
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                return StatusCode(401, ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
             }
         }
     }
