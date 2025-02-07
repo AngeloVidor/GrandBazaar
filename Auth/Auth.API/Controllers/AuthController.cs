@@ -19,7 +19,7 @@ namespace Auth.API.Controllers
             _authService = authService;
         }
 
-        [HttpPost("register")]
+        [HttpPost("Register")]
         public async Task<IActionResult> RegisterNewUserAsync([FromBody] RegistrationDto registration)
         {
             if (!ModelState.IsValid)
@@ -38,6 +38,25 @@ namespace Auth.API.Controllers
             catch (Exception ex)
             {
                 return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpPost("SignIn")]
+        public async Task<IActionResult> SignIn(string email, string password)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                var user = await _authService.SignInAsync(email, password);
+                return Ok(user);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(50, ex.Message);
             }
         }
     }

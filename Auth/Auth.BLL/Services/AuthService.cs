@@ -37,5 +37,15 @@ namespace Auth.BLL.Services
             var response = await _authRepository.RegisterNewUserAsync(entity);
             return _mapper.Map<RegistrationDto>(response);
         }
+
+        public async Task<LoginDto> SignInAsync(string email, string password)
+        {
+            var userEntity = await _userManagement.GetUserByEmailAsync(email);
+            if (userEntity == null || !BCrypt.Net.BCrypt.Verify(password, userEntity.Password))
+            {
+                return null;
+            }
+            return _mapper.Map<LoginDto>(userEntity);
+        }
     }
 }

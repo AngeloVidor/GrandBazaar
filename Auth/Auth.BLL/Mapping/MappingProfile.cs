@@ -13,6 +13,7 @@ namespace Auth.BLL.Mapping
         public MappingProfile()
         {
             CreateMap<User, RegistrationDto>().ReverseMap();
+            CreateMap<User, LoginDto>().ReverseMap();
         }
     }
 }
