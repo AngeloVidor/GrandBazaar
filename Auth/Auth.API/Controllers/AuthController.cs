@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Auth.BLL.DTOs;
 using Auth.BLL.Interfaces;
+using Auth.BLL.Interfaces.Tokens;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Auth.API.Controllers
@@ -13,10 +14,13 @@ namespace Auth.API.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IAuthService _authService;
+        private readonly IBearerTokenManagement _bearerTokenManagement;
 
-        public AuthController(IAuthService authService)
+
+        public AuthController(IAuthService authService, IBearerTokenManagement bearerTokenManagement)
         {
             _authService = authService;
+            _bearerTokenManagement = bearerTokenManagement;
         }
 
         [HttpPost("Register")]
@@ -52,7 +56,8 @@ namespace Auth.API.Controllers
             try
             {
                 var user = await _authService.SignInAsync(email, password);
-                return Ok(user);
+                var token = await _bearerTokenManagement.GenerateTokenAsync(user);
+                return Ok(new { Token = token, User = user });
             }
             catch (Exception ex)
             {

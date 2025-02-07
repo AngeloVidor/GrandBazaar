@@ -1,6 +1,8 @@
 using Auth.BLL.Interfaces;
+using Auth.BLL.Interfaces.Tokens;
 using Auth.BLL.Mapping;
 using Auth.BLL.Services;
+using Auth.BLL.Services.Tokens;
 using Auth.DAL.Context;
 using Auth.DAL.Interfaces;
 using Auth.DAL.Repositories;
@@ -23,6 +25,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IUserManagementRepository, UserManagementRepository>();
+builder.Services.AddScoped<IBearerTokenManagement, BearerTokenManagement>();
 
 
 

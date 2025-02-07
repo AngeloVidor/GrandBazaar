@@ -176,3 +176,5 @@ C:\Users\angel\Desktop\GrandBazaar\Auth\Auth.API\obj\Debug\net8.0\refint\Auth.AP
 C:\Users\angel\Desktop\GrandBazaar\Auth\Auth.API\obj\Debug\net8.0\Auth.API.pdb
 C:\Users\angel\Desktop\GrandBazaar\Auth\Auth.API\obj\Debug\net8.0\Auth.API.genruntimeconfig.cache
 C:\Users\angel\Desktop\GrandBazaar\Auth\Auth.API\obj\Debug\net8.0\ref\Auth.API.dll
+C:\Users\angel\Desktop\GrandBazaar\Auth\Auth.API\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\angel\Desktop\GrandBazaar\Auth\Auth.API\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Binder.dll
