@@ -40,5 +40,17 @@ namespace Sellers.API.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
+        [HttpGet]
+        public async Task<IActionResult> HelloWorld()
+        {
+            var userId = HttpContext.Items["userId"]?.ToString();
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized(new { message = "Usuário não autenticado" });
+            }
+            return Ok(userId);
+
+        }
     }
 }

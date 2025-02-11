@@ -1,3 +1,11 @@
+C:\Users\angel\Desktop\GrandBazaar\Sellers\Sellers.API\obj\Debug\net8.0\Sellers.API.csproj.AssemblyReference.cache
+C:\Users\angel\Desktop\GrandBazaar\Sellers\Sellers.API\obj\Debug\net8.0\Sellers.API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\angel\Desktop\GrandBazaar\Sellers\Sellers.API\obj\Debug\net8.0\Sellers.API.AssemblyInfoInputs.cache
+C:\Users\angel\Desktop\GrandBazaar\Sellers\Sellers.API\obj\Debug\net8.0\Sellers.API.AssemblyInfo.cs
+C:\Users\angel\Desktop\GrandBazaar\Sellers\Sellers.API\obj\Debug\net8.0\Sellers.API.csproj.CoreCompileInputs.cache
+C:\Users\angel\Desktop\GrandBazaar\Sellers\Sellers.API\obj\Debug\net8.0\Sellers.API.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\angel\Desktop\GrandBazaar\Sellers\Sellers.API\obj\Debug\net8.0\Sellers.API.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\angel\Desktop\GrandBazaar\Sellers\Sellers.API\obj\Debug\net8.0\Sellers.API.sourcelink.json
 C:\Users\angel\Desktop\GrandBazaar\Sellers\Sellers.API\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\angel\Desktop\GrandBazaar\Sellers\Sellers.API\bin\Debug\net8.0\appsettings.json
 C:\Users\angel\Desktop\GrandBazaar\Sellers\Sellers.API\bin\Debug\net8.0\Sellers.API.exe
@@ -155,14 +163,6 @@ C:\Users\angel\Desktop\GrandBazaar\Sellers\Sellers.API\bin\Debug\net8.0\Sellers.
 C:\Users\angel\Desktop\GrandBazaar\Sellers\Sellers.API\bin\Debug\net8.0\Sellers.BLL.pdb
 C:\Users\angel\Desktop\GrandBazaar\Sellers\Sellers.API\bin\Debug\net8.0\Sellers.DAL.pdb
 C:\Users\angel\Desktop\GrandBazaar\Sellers\Sellers.API\bin\Debug\net8.0\Sellers.Domain.pdb
-C:\Users\angel\Desktop\GrandBazaar\Sellers\Sellers.API\obj\Debug\net8.0\Sellers.API.csproj.AssemblyReference.cache
-C:\Users\angel\Desktop\GrandBazaar\Sellers\Sellers.API\obj\Debug\net8.0\Sellers.API.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\angel\Desktop\GrandBazaar\Sellers\Sellers.API\obj\Debug\net8.0\Sellers.API.AssemblyInfoInputs.cache
-C:\Users\angel\Desktop\GrandBazaar\Sellers\Sellers.API\obj\Debug\net8.0\Sellers.API.AssemblyInfo.cs
-C:\Users\angel\Desktop\GrandBazaar\Sellers\Sellers.API\obj\Debug\net8.0\Sellers.API.csproj.CoreCompileInputs.cache
-C:\Users\angel\Desktop\GrandBazaar\Sellers\Sellers.API\obj\Debug\net8.0\Sellers.API.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\angel\Desktop\GrandBazaar\Sellers\Sellers.API\obj\Debug\net8.0\Sellers.API.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\angel\Desktop\GrandBazaar\Sellers\Sellers.API\obj\Debug\net8.0\Sellers.API.sourcelink.json
 C:\Users\angel\Desktop\GrandBazaar\Sellers\Sellers.API\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\angel\Desktop\GrandBazaar\Sellers\Sellers.API\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\angel\Desktop\GrandBazaar\Sellers\Sellers.API\obj\Debug\net8.0\staticwebassets\msbuild.Sellers.API.Microsoft.AspNetCore.StaticWebAssets.props
