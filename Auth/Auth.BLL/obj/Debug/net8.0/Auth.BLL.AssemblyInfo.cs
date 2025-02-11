@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Auth.BLL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b061a0430019a772d78ae32eb16a7555e8f347f7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5f0748b622c5dfa698298edf33948237547cfaa3")]
 [assembly: System.Reflection.AssemblyProductAttribute("Auth.BLL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Auth.BLL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

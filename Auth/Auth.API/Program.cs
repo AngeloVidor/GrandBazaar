@@ -4,6 +4,7 @@ using Auth.BLL.Interfaces;
 using Auth.BLL.Interfaces.Management;
 using Auth.BLL.Interfaces.Tokens;
 using Auth.BLL.Mapping;
+using Auth.BLL.Messaging;
 using Auth.BLL.Services;
 using Auth.BLL.Services.Management;
 using Auth.BLL.Services.Tokens;
@@ -67,6 +68,7 @@ builder.Services.AddScoped<IUserManagementRepository, UserManagementRepository>(
 builder.Services.AddScoped<IBearerTokenManagement, BearerTokenManagement>();
 builder.Services.AddScoped<IUserManagementService, UserManagementService>();
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddHostedService<Sub>();
 
 
 
