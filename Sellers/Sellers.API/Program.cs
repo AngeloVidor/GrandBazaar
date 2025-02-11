@@ -56,6 +56,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddScoped<IProfileRepository, ProfileRepository>();
 builder.Services.AddScoped<IProfileService, ProfileService>();
+builder.Services.AddScoped<IProfileManagementRepository, ProfileManagementRepository>();
+
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 

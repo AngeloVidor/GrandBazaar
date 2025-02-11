@@ -34,6 +34,10 @@ namespace Sellers.API.Controllers
                 var profile = await _profileService.AddSellerProfileAsync(sellerDetails);
                 return Ok(profile);
             }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
             catch (KeyNotFoundException ex)
             {
                 return NotFound(ex.Message);
