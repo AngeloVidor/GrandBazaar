@@ -9,5 +9,6 @@ namespace Sellers.DAL.Interfaces
     public interface IProfileRepository
     {
         Task<SellerDetails> AddSellerProfileAsync(SellerDetails sellerDetails);
+        Task<SellerDetails> GetMyProfileAsync(long userId);
     }
 }

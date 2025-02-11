@@ -34,5 +34,13 @@ namespace Sellers.BLL.Services
             var response = await _profileRepository.AddSellerProfileAsync(sellerEntity);
             return _mapper.Map<SellerDetailsDto>(response);
         }
+
+        public async Task<SellerDetailsDto> GetMyProfileAsync(long userId)
+        {
+            var sellerProfile = await _profileRepository.GetMyProfileAsync(userId);
+            var result = _mapper.Map<SellerDetailsDto>(sellerProfile);
+            return result;
+
+        }
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Sellers.BLL.DTOs;
 using Sellers.BLL.Interfaces;
@@ -47,5 +48,24 @@ namespace Sellers.API.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
+        [HttpGet("myProfile")]
+        public async Task<IActionResult> MyProfile()
+        {
+            var userId = long.Parse(HttpContext.Items["userId"]?.ToString());
+
+            try
+            {
+                var profile = await _profileService.GetMyProfileAsync(userId);
+                return Ok(profile);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+
+        }
+
+
     }
 }
