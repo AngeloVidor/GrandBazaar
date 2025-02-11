@@ -26,5 +26,11 @@ namespace Sellers.DAL.Repositories
             }
             return false;
         }
+
+        public async Task<long> GetSellerProfileIdByUserIdAsync(long userId)
+        {
+            var user = await _dbContext.Sellers.FirstOrDefaultAsync(x => x.User_Id == userId);
+            return user.Seller_Id;
+        }
     }
 }
