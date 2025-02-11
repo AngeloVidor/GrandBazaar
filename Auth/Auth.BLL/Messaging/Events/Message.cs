@@ -5,11 +5,9 @@ using System.Threading.Tasks;
 
 namespace Auth.BLL.Messaging.Events
 {
-    public class UserValidationResponse
+    public class Message
     {
         public long User_Id { get; set; }
-        public string CorrelationId { get; set; }
-        public bool IsValid { get; set; }
-
+        public long Seller_Id { get; set; }
     }
 }

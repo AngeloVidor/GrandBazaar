@@ -5,10 +5,8 @@ using System.Threading.Tasks;
 
 namespace Auth.BLL.Messaging.Events
 {
-    public class UserValidationRequest
+    public interface ISellerProfileCreatedConsumer
     {
-        public long User_Id { get; set; }
-        public string CorrelationId { get; set; }
-
+         void StartListening();
     }
 }
