@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Sellers.BLL.DTOs;
 using Sellers.BLL.Interfaces;
-using Sellers.BLL.Messaging.Events;
 using Sellers.DAL.Interfaces;
 using Sellers.Domain.Entities;
 
@@ -13,17 +12,15 @@ namespace Sellers.BLL.Services
 {
     public class ProfileService : IProfileService
     {
-        private readonly ISellerProfileCreatedEvent _event;
         private readonly IProfileRepository _profileRepository;
         private readonly IProfileManagementRepository _profileManagement;
         private readonly IMapper _mapper;
 
-        public ProfileService(IProfileRepository profileRepository, IMapper mapper, IProfileManagementRepository profileManagement, ISellerProfileCreatedEvent @event)
+        public ProfileService(IProfileRepository profileRepository, IMapper mapper, IProfileManagementRepository profileManagement)
         {
             _profileRepository = profileRepository;
             _mapper = mapper;
             _profileManagement = profileManagement;
-            _event = @event;
         }
 
         public async Task<SellerDetailsDto> AddSellerProfileAsync(SellerDetailsDto sellerDetails)
@@ -36,10 +33,6 @@ namespace Sellers.BLL.Services
 
             var sellerEntity = _mapper.Map<SellerDetails>(sellerDetails);
             var response = await _profileRepository.AddSellerProfileAsync(sellerEntity);
-
-            long sellerId = await _profileManagement.GetSellerProfileIdByUserIdAsync(sellerDetails.User_Id);
-            _event.Pub(sellerId, sellerDetails.User_Id);
-            
             return _mapper.Map<SellerDetailsDto>(response);
         }
 
