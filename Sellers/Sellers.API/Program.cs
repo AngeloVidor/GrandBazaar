@@ -3,6 +3,9 @@ using Microsoft.OpenApi.Models;
 using Sellers.API.Middlewares;
 using Sellers.BLL.Interfaces;
 using Sellers.BLL.Mapping;
+using Sellers.BLL.Messaging.Background;
+using Sellers.BLL.Messaging.Events.Interfaces;
+using Sellers.BLL.Messaging.Events.Services;
 using Sellers.BLL.Services;
 using Sellers.DAL.Context;
 using Sellers.DAL.Interfaces;
@@ -57,6 +60,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddScoped<IProfileRepository, ProfileRepository>();
 builder.Services.AddScoped<IProfileService, ProfileService>();
 builder.Services.AddScoped<IProfileManagementRepository, ProfileManagementRepository>();
+builder.Services.AddScoped<IProfileManagementService, ProfileManagementService>();
+builder.Services.AddScoped<ITransferUserToSellerEvent, TransferUserToSellerEvent>();
+builder.Services.AddSingleton<IHostedService, TransferUserToSellerBackgroundService>();
+
 
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));

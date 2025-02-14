@@ -177,3 +177,6 @@ C:\Users\angel\Desktop\GrandBazaar\Sellers\Sellers.API\obj\Debug\net8.0\refint\S
 C:\Users\angel\Desktop\GrandBazaar\Sellers\Sellers.API\obj\Debug\net8.0\Sellers.API.pdb
 C:\Users\angel\Desktop\GrandBazaar\Sellers\Sellers.API\obj\Debug\net8.0\Sellers.API.genruntimeconfig.cache
 C:\Users\angel\Desktop\GrandBazaar\Sellers\Sellers.API\obj\Debug\net8.0\ref\Sellers.API.dll
+C:\Users\angel\Desktop\GrandBazaar\Sellers\Sellers.API\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+C:\Users\angel\Desktop\GrandBazaar\Sellers\Sellers.API\bin\Debug\net8.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\angel\Desktop\GrandBazaar\Sellers\Sellers.API\bin\Debug\net8.0\Microsoft.Extensions.Hosting.Abstractions.dll
