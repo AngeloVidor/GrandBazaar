@@ -2,13 +2,17 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Products.API.Middlewares;
 using Products.BLL.Interfaces;
+using Products.BLL.Interfaces.Provider;
 using Products.BLL.Mapping;
 using Products.BLL.Messaging.Events.Interfaces;
 using Products.BLL.Messaging.Events.Services;
 using Products.BLL.Services;
+using Products.BLL.Services.Provider;
 using Products.DAL.Context;
 using Products.DAL.Interfaces;
+using Products.DAL.Interfaces.Provider;
 using Products.DAL.Repositories;
+using Products.DAL.Repositories.Provider;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -60,6 +64,8 @@ builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ITransferUserToSellerEvent, TransferUserToSellerEvent>();
 builder.Services.AddScoped<TaskCompletionSource<long>>();
+builder.Services.AddScoped<IProductProviderRepository, ProductProviderRepository>();
+builder.Services.AddScoped<IProductProviderService, ProductProviderService>();
 
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));

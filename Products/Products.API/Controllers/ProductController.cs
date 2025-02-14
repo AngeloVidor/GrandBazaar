@@ -38,9 +38,11 @@ namespace Products.API.Controllers
                 {
                     return StatusCode(401, "User must be logged in.");
                 }
+
                 long userId = long.Parse(userIdString);
+
                 product.Seller_Id = await _transfer.GetSellerIdAsync(userId);
-                System.Console.WriteLine($"Added Seller_ID: {product.Seller_Id}");
+
                 var newProduct = await _productService.AddNewProductAsync(product);
                 return Ok(newProduct);
             }
