@@ -6,6 +6,7 @@ using AutoMapper;
 using Products.BLL.DTOs;
 using Products.BLL.Interfaces;
 using Products.BLL.Messaging.Events.Interfaces;
+using Products.BLL.Messaging.Events.Services;
 using Products.DAL.Interfaces;
 using Products.Domain.Entities;
 

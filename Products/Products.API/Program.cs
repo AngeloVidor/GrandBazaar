@@ -59,6 +59,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ITransferUserToSellerEvent, TransferUserToSellerEvent>();
+builder.Services.AddScoped<TaskCompletionSource<long>>();
+
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 

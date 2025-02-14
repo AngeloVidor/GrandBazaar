@@ -14,10 +14,12 @@ namespace Products.BLL.Messaging.Events.Services
     public class TransferUserToSellerEvent : ITransferUserToSellerEvent
     {
         private readonly IConnection _connection;
+        private readonly TaskCompletionSource<long> _responseTaskSource = new TaskCompletionSource<long>();
         private readonly IModel _channel;
 
         public TransferUserToSellerEvent()
         {
+            Console.WriteLine("Listening...");
             var factory = new ConnectionFactory { HostName = "localhost" };
             _connection = factory.CreateConnection();
             _channel = _connection.CreateModel();
@@ -36,6 +38,9 @@ namespace Products.BLL.Messaging.Events.Services
                     User_Id = result.User_Id,
                     Seller_Id = result.Seller_Id
                 };
+
+                _channel.BasicAck(ea.DeliveryTag, false);
+                _responseTaskSource.TrySetResult(result.Seller_Id);
             };
 
             _channel.BasicConsume(queue: "seller.to.user.response", autoAck: false, consumer: consumer);
@@ -56,7 +61,12 @@ namespace Products.BLL.Messaging.Events.Services
             properties.ReplyTo = "seller.to.user.response";
 
             _channel.BasicPublish(exchange: "", routingKey: "user.to.seller.request", basicProperties: properties, body: body);
+        }
 
+        public async Task<long> GetSellerIdAsync(long userId)
+        {
+            Publish(userId);
+            return await _responseTaskSource.Task;
         }
     }
 }

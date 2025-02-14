@@ -9,5 +9,6 @@ namespace Products.BLL.Messaging.Events.Interfaces
     public interface ITransferUserToSellerEvent
     {
         void Publish(long userId);
+        Task<long> GetSellerIdAsync(long userId);
     }
 }

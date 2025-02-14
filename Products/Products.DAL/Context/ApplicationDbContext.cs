@@ -14,5 +14,12 @@ namespace Products.DAL.Context
 
         }
         public DbSet<Product> Products { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Product>()
+                .Property(e => e.Price)
+                 .HasColumnType("decimal(18,2)");
+        }
     }
 }

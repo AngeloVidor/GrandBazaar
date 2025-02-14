@@ -37,27 +37,35 @@ namespace Sellers.BLL.Messaging.Events.Services
             var consumer = new EventingBasicConsumer(_channel);
             consumer.Received += async (model, ea) =>
             {
-                using (var scope = _serviceScopeFactory.CreateScope())
+                try
                 {
-                    var body = ea.Body.ToArray();
-                    var messageBody = Encoding.UTF8.GetString(body);
-                    var message = JsonConvert.DeserializeObject<UserToSellerRequest>(messageBody);
-
-                    var properties = _channel.CreateBasicProperties();
-                    var replyTo = ea.BasicProperties.ReplyTo;
-
-                    var sellerId = await GetSellerIdAsync(message.User_Id);
-
-                    var response = new UserToSellerResponse
+                    using (var scope = _serviceScopeFactory.CreateScope())
                     {
-                        User_Id = message.User_Id,
-                        Seller_Id = sellerId,
-                        CorrelationId = message.CorrelationId
-                    };
+                        var body = ea.Body.ToArray();
+                        var messageBody = Encoding.UTF8.GetString(body);
+                        var message = JsonConvert.DeserializeObject<UserToSellerRequest>(messageBody);
 
-                    Console.WriteLine($"SellerID: {response.Seller_Id}");
+                        var properties = _channel.CreateBasicProperties();
+                        var replyTo = ea.BasicProperties.ReplyTo;
 
-                    await Publish(response, replyTo);
+                        var sellerId = await GetSellerIdAsync(message.User_Id);
+
+                        var response = new UserToSellerResponse
+                        {
+                            User_Id = message.User_Id,
+                            Seller_Id = sellerId,
+                            CorrelationId = message.CorrelationId
+                        };
+
+                        await Publish(response, replyTo);
+
+                        _channel.BasicAck(ea.DeliveryTag, false);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error: {ex.Message}");
+                    _channel.BasicNack(ea.DeliveryTag, false, true);
                 }
 
             };
@@ -82,3 +90,4 @@ namespace Sellers.BLL.Messaging.Events.Services
         }
     }
 }
+

@@ -34,10 +34,15 @@ namespace Products.API.Controllers
             try
             {
                 var userIdString = HttpContext.Items["userId"]?.ToString();
+                if (userIdString == null)
+                {
+                    return StatusCode(401, "User must be logged in.");
+                }
                 long userId = long.Parse(userIdString);
-                _transfer.Publish(userId);
-                //var newProduct = await _productService.AddNewProductAsync(product);
-                return Ok("sent!");
+                product.Seller_Id = await _transfer.GetSellerIdAsync(userId);
+                System.Console.WriteLine($"Added Seller_ID: {product.Seller_Id}");
+                var newProduct = await _productService.AddNewProductAsync(product);
+                return Ok(newProduct);
             }
             catch (Exception ex)
             {
