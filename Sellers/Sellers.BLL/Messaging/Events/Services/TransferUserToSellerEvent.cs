@@ -33,7 +33,6 @@ namespace Sellers.BLL.Messaging.Events.Services
         }
         public void Consume()
         {
-
             Console.WriteLine("Listening...");
             var consumer = new EventingBasicConsumer(_channel);
             consumer.Received += async (model, ea) =>
@@ -45,11 +44,9 @@ namespace Sellers.BLL.Messaging.Events.Services
                     var message = JsonConvert.DeserializeObject<UserToSellerRequest>(messageBody);
 
                     var properties = _channel.CreateBasicProperties();
-                    var replyTo = properties.ReplyTo;
+                    var replyTo = ea.BasicProperties.ReplyTo;
 
-                    
                     var sellerId = await GetSellerIdAsync(message.User_Id);
-
 
                     var response = new UserToSellerResponse
                     {
@@ -76,10 +73,8 @@ namespace Sellers.BLL.Messaging.Events.Services
             _channel.BasicPublish(exchange: "", routingKey: replyTo, basicProperties: properties, body: body);
 
             Console.WriteLine("Response sent!");
-
             return Task.CompletedTask;
         }
-
 
         public async Task<long> GetSellerIdAsync(long userId)
         {
