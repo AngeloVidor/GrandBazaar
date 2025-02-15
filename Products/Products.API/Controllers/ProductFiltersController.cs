@@ -35,5 +35,23 @@ namespace Products.API.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
+        [HttpGet("quality")]
+        public async Task<IActionResult> GetProductsByQuality(int quality)
+        {
+            try
+            {
+                var productsQuality = await _productFilterService.GetProductByQualityAsync(quality);
+                return Ok(productsQuality);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return StatusCode(400, ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
     }
 }

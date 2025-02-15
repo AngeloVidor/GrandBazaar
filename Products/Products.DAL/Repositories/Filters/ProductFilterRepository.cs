@@ -22,7 +22,12 @@ namespace Products.DAL.Repositories.Filters
         {
             var categoryEnum = (IECategory)category;
             return await _dbContext.Products.Where(x => x.Category == categoryEnum).ToListAsync();
+        }
 
+        public async Task<IEnumerable<Product>> GetProductByQualityAsync(int quality)
+        {
+            var qualityEnum = (IEQuality)quality;
+            return await _dbContext.Products.Where(x => x.Quality == qualityEnum).ToListAsync();
         }
     }
 }

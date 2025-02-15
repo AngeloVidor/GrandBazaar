@@ -9,5 +9,7 @@ namespace Products.BLL.Interfaces.Filters
     public interface IProductFilterService
     {
         Task<IEnumerable<ProductDto>> GetProductsByCategoryAsync(int category);
+        Task<IEnumerable<ProductDto>> GetProductByQualityAsync(int quality);
+
     }
 }

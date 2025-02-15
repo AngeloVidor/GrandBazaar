@@ -20,6 +20,16 @@ namespace Products.BLL.Services.Filters
             _mapper = mapper;
         }
 
+        public async Task<IEnumerable<ProductDto>> GetProductByQualityAsync(int quality)
+        {
+            if (quality < 0 || quality > 4)
+            {
+                throw new KeyNotFoundException("Quality must be between 0 and 4");
+            }
+            var products = await _productFilterRepository.GetProductByQualityAsync(quality);
+            return _mapper.Map<List<ProductDto>>(products);
+        }
+
         public async Task<IEnumerable<ProductDto>> GetProductsByCategoryAsync(int category)
         {
             if (category < 0 || category > 13)
