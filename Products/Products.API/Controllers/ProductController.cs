@@ -73,5 +73,23 @@ namespace Products.API.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
+        [HttpDelete]
+        public async Task<IActionResult> RemoveProduct(long productId)
+        {
+            try
+            {
+                var deletedProduct = await _productService.RemoveProductAsync(productId);
+                return Ok(deletedProduct);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return StatusCode(400, ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
     }
 }

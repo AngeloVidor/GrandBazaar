@@ -36,5 +36,15 @@ namespace Products.BLL.Services
             var updatedProduct = await _productRepository.UpdateProductAsync(productEntity);
             return _mapper.Map<UpdateProductDto>(updatedProduct);
         }
+
+        public async Task<ProductDto> RemoveProductAsync(long productId)
+        {
+            if (productId <= 0)
+            {
+                throw new InvalidOperationException("ProductID must be a positive integer");
+            }
+            var deletedProduct = await _productRepository.RemoveProductAsync(productId);
+            return _mapper.Map<ProductDto>(deletedProduct);
+        }
     }
 }

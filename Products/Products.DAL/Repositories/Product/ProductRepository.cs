@@ -47,10 +47,18 @@ namespace Products.DAL.Repositories
 
             selectedProduct.Category.ToString();
             selectedProduct.Quality.ToString();
-            
+
             _dbContext.Products.Update(selectedProduct);
             await _dbContext.SaveChangesAsync();
             return selectedProduct;
+        }
+
+        public async Task<Product> RemoveProductAsync(long productId)
+        {
+            var product = await _dbContext.Products.FirstOrDefaultAsync(x => x.Product_Id == productId);
+            _dbContext.Remove(product);
+            await _dbContext.SaveChangesAsync();
+            return product;
         }
     }
 }

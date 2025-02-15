@@ -10,5 +10,6 @@ namespace Products.DAL.Interfaces
     {
         Task<Product> AddNewProductAsync(Product product);
         Task<Product> UpdateProductAsync(Product product);
+        Task<Product> RemoveProductAsync(long productId);
     }
 }

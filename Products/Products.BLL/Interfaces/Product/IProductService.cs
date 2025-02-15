@@ -10,5 +10,6 @@ namespace Products.BLL.Interfaces
     {
         Task<ProductDto> AddNewProductAsync(ProductDto product);
         Task<UpdateProductDto> UpdateProductAsync(UpdateProductDto product);
+        Task<ProductDto> RemoveProductAsync(long productId);
     }
 }
