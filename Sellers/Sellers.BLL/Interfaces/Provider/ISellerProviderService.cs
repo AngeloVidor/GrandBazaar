@@ -9,5 +9,6 @@ namespace Sellers.BLL.Interfaces.Provider
     public interface ISellerProviderService
     {
         Task<SellerDetailsDto> GetSellerByIdAsync(long sellerId);
+        Task<IEnumerable<SellerDetailsDto>> GetAllSellersAsync();
     }
 }

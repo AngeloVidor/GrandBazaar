@@ -9,5 +9,6 @@ namespace Sellers.DAL.Interfaces.Provider
     public interface ISellerProviderRepository
     {
         Task<SellerDetails> GetSellerByIdAsync(long sellerId);
+        Task<IEnumerable<SellerDetails>> GetAllSellersAsync();
     }
 }

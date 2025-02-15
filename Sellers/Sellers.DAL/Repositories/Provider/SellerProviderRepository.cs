@@ -18,6 +18,11 @@ namespace Sellers.DAL.Repositories.Provider
             _dbContext = dbContext;
         }
 
+        public async Task<IEnumerable<SellerDetails>> GetAllSellersAsync()
+        {
+            return await _dbContext.Sellers.ToListAsync();
+        }
+
         public async Task<SellerDetails> GetSellerByIdAsync(long sellerId)
         {
             return await _dbContext.Sellers.FirstOrDefaultAsync(x => x.Seller_Id == sellerId);

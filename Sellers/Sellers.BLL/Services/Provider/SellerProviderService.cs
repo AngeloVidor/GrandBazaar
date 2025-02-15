@@ -20,6 +20,17 @@ namespace Sellers.BLL.Services.Provider
             _mapper = mapper;
         }
 
+        public async Task<IEnumerable<SellerDetailsDto>> GetAllSellersAsync()
+        {
+            var sellers = await _sellerProviderRepository.GetAllSellersAsync();
+            if (sellers == null)
+            {
+                throw new InvalidOperationException("Failed to retrieve sellers from repository.");
+
+            }
+            return _mapper.Map<List<SellerDetailsDto>>(sellers);
+        }
+
         public async Task<SellerDetailsDto> GetSellerByIdAsync(long sellerId)
         {
             if (sellerId <= 0)

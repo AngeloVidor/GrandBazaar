@@ -35,5 +35,23 @@ namespace Sellers.API.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
+        [HttpGet("sellers")]
+        public async Task<IActionResult> GetAllSellers()
+        {
+            try
+            {
+                var sellers = await _sellerProviderService.GetAllSellersAsync();
+                return Ok(sellers);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return StatusCode(400, ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
     }
 }
