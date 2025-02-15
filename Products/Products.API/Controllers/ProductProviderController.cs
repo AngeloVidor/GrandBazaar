@@ -36,5 +36,23 @@ namespace Products.API.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
+        [HttpGet("id")]
+        public async Task<IActionResult> GetProductById(long productId)
+        {
+            try
+            {
+                var product = await _productProviderService.GetProductByIdAsync(productId);
+                return Ok(product);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return StatusCode(400, ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
     }
 }

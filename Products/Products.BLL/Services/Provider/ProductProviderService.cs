@@ -39,5 +39,21 @@ namespace Products.BLL.Services.Provider
             return productDtos;
 
         }
+
+        public async Task<ProductDisplayDto> GetProductByIdAsync(long productId)
+        {
+            var product = await _productProviderRepo.GetProductByIdAsync(productId);
+            if (product == null)
+            {
+                throw new KeyNotFoundException($"Product with Id {product.Product_Id} not found");
+            }
+
+            var dto = _mapper.Map<ProductDisplayDto>(product);
+
+            dto.CategoryValue = Enum.GetName(typeof(IECategory), dto.Category) ?? "Unknown";
+            dto.QualityValue = Enum.GetName(typeof(IEQuality), dto.Quality) ?? "Unknown";
+
+            return dto;
+        }
     }
 }
