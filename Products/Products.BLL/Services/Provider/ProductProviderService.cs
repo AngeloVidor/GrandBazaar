@@ -21,14 +21,23 @@ namespace Products.BLL.Services.Provider
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<ProductDto>> GetAllProductsForDisplayAsync()
+        public async Task<IEnumerable<ProductDisplayDto>> GetAllProductsForDisplayAsync()
         {
             var products = await _productProviderRepo.GetAllProductsForDisplayAsync();
             if (products == null)
             {
                 throw new InvalidOperationException("Failed to retrieve the product list for display.");
             }
-            return _mapper.Map<List<ProductDto>>(products);
+
+            var productDtos = _mapper.Map<List<ProductDisplayDto>>(products);
+            foreach (var dto in productDtos)
+            {
+                dto.CategoryValue = Enum.GetName(typeof(IECategory), dto.Category) ?? "Unknown";
+                dto.QualityValue = Enum.GetName(typeof(IEQuality), dto.Quality) ?? "Unknown";
+            }
+
+            return productDtos;
+
         }
     }
 }

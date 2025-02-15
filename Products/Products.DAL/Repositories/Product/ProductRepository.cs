@@ -19,6 +19,11 @@ namespace Products.DAL.Repositories
 
         public async Task<Product> AddNewProductAsync(Product product)
         {
+            product.Category.ToString();
+            product.Quality.ToString();
+            
+            System.Console.WriteLine(product.Category.ToString());
+
             await _dbContext.AddAsync(product);
             await _dbContext.SaveChangesAsync();
             return product;

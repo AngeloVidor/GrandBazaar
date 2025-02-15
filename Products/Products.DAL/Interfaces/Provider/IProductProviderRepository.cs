@@ -9,5 +9,6 @@ namespace Products.DAL.Interfaces.Provider
     public interface IProductProviderRepository
     {
         Task<IEnumerable<Product>> GetAllProductsForDisplayAsync();
+        Task<Product> GetProductByIdAsync(long productId);
     }
 }

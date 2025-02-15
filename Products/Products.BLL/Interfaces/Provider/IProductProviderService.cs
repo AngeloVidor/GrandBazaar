@@ -8,6 +8,6 @@ namespace Products.BLL.Interfaces.Provider
 {
     public interface IProductProviderService
     {
-        Task<IEnumerable<ProductDto>> GetAllProductsForDisplayAsync();
+        Task<IEnumerable<ProductDisplayDto>> GetAllProductsForDisplayAsync();
     }
 }

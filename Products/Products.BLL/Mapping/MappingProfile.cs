@@ -13,6 +13,7 @@ namespace Products.BLL.Mapping
         public MappingProfile()
         {
             CreateMap<Product, ProductDto>().ReverseMap();
+            CreateMap<Product, ProductDisplayDto>().ReverseMap();
         }
     }
 }

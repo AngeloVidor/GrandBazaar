@@ -22,5 +22,10 @@ namespace Products.DAL.Repositories.Provider
         {
             return await _dbContext.Products.ToListAsync();
         }
+
+        public async Task<Product> GetProductByIdAsync(long productId)
+        {
+            return await _dbContext.Products.FirstOrDefaultAsync(x => x.Product_Id == productId);
+        }
     }
 }
