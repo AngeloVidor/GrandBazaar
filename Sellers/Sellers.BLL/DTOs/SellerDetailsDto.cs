@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Sellers.Domain.Entities;
 
 namespace Sellers.BLL.DTOs
 {
@@ -16,5 +17,7 @@ namespace Sellers.BLL.DTOs
         public string Phone { get; set; }
         public DateTime JoinDate = DateTime.UtcNow;
         public long User_Id { get; set; }
+        public IECategory MainCategory { get; set; }
+
     }
 }

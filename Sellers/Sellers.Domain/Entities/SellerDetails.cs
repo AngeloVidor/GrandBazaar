@@ -17,6 +17,7 @@ namespace Sellers.Domain.Entities
         public string Phone { get; set; }
         public DateTime JoinDate = DateTime.UtcNow;
         public long User_Id { get; set; }
+        public IECategory MainCategory { get; set; }
 
     }
 }

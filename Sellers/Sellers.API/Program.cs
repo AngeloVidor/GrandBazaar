@@ -2,14 +2,18 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Sellers.API.Middlewares;
 using Sellers.BLL.Interfaces;
+using Sellers.BLL.Interfaces.Filters;
 using Sellers.BLL.Mapping;
 using Sellers.BLL.Messaging.Background;
 using Sellers.BLL.Messaging.Events.Interfaces;
 using Sellers.BLL.Messaging.Events.Services;
 using Sellers.BLL.Services;
+using Sellers.BLL.Services.Filters;
 using Sellers.DAL.Context;
 using Sellers.DAL.Interfaces;
+using Sellers.DAL.Interfaces.Filters;
 using Sellers.DAL.Repositories;
+using Sellers.DAL.Repositories.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -63,6 +67,8 @@ builder.Services.AddScoped<IProfileManagementRepository, ProfileManagementReposi
 builder.Services.AddScoped<IProfileManagementService, ProfileManagementService>();
 builder.Services.AddScoped<ITransferUserToSellerEvent, TransferUserToSellerEvent>();
 builder.Services.AddSingleton<IHostedService, TransferUserToSellerBackgroundService>();
+builder.Services.AddScoped<ISellersFiltersRepository, SellersFiltersRepository>();
+builder.Services.AddScoped<ISellersFiltersService, SellersFiltersService>();
 
 
 
