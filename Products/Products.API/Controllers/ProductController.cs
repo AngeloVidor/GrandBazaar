@@ -42,6 +42,7 @@ namespace Products.API.Controllers
                 long userId = long.Parse(userIdString);
 
                 product.Seller_Id = await _transfer.GetSellerIdAsync(userId);
+                System.Console.WriteLine($"Seller_ID in Controller: {product.Seller_Id}");
 
                 var newProduct = await _productService.AddNewProductAsync(product);
                 return Ok(newProduct);

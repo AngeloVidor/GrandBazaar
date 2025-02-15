@@ -23,8 +23,6 @@ namespace Products.DAL.Repositories
 
         public async Task<Product> AddNewProductAsync(Product product)
         {
-            product.Category.ToString();
-            product.Quality.ToString();
 
             await _dbContext.AddAsync(product);
             await _dbContext.SaveChangesAsync();
@@ -44,9 +42,6 @@ namespace Products.DAL.Repositories
             selectedProduct.Category = product.Category;
             selectedProduct.DateAdded = product.DateAdded;
             selectedProduct.Quality = product.Quality;
-
-            selectedProduct.Category.ToString();
-            selectedProduct.Quality.ToString();
 
             _dbContext.Products.Update(selectedProduct);
             await _dbContext.SaveChangesAsync();

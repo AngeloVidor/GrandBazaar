@@ -2,11 +2,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Products.API.Middlewares;
 using Products.BLL.Interfaces;
+using Products.BLL.Interfaces.Filters;
 using Products.BLL.Interfaces.Provider;
 using Products.BLL.Mapping;
 using Products.BLL.Messaging.Events.Interfaces;
 using Products.BLL.Messaging.Events.Services;
 using Products.BLL.Services;
+using Products.BLL.Services.Filters;
 using Products.BLL.Services.Provider;
 using Products.DAL.Context;
 using Products.DAL.Interfaces;
@@ -69,6 +71,8 @@ builder.Services.AddScoped<TaskCompletionSource<long>>();
 builder.Services.AddScoped<IProductProviderRepository, ProductProviderRepository>();
 builder.Services.AddScoped<IProductProviderService, ProductProviderService>();
 builder.Services.AddScoped<IProductFilterRepository, ProductFilterRepository>();
+builder.Services.AddScoped<IProductFilterService, ProductFilterService>();
+
 
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));

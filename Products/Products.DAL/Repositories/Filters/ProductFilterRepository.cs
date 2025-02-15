@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Products.DAL.Context;
 using Products.DAL.Interfaces.Filters;
 using Products.Domain.Entities;
@@ -19,7 +20,9 @@ namespace Products.DAL.Repositories.Filters
 
         public async Task<IEnumerable<Product>> GetProductsByCategoryAsync(int category)
         {
-            throw new NotImplementedException();
+            var categoryEnum = (IECategory)category;
+            return await _dbContext.Products.Where(x => x.Category == categoryEnum).ToListAsync();
+
         }
     }
 }

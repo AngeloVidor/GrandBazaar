@@ -9,5 +9,6 @@ namespace Products.DAL.Interfaces.Filters
     public interface IProductFilterRepository
     {
         Task<IEnumerable<Product>> GetProductsByCategoryAsync(int category);
+        
     }
 }

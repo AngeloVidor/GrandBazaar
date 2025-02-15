@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Products.Domain.Entities;
 
@@ -16,10 +17,8 @@ namespace Products.BLL.DTOs
         public int StockQuantity { get; set; }
         public long Seller_Id { get; set; }
         public IECategory Category { get; set; }
-        public string CategoryValue { get; set; }
         public DateTime DateAdded { get; set; } = DateTime.UtcNow;
         public IEQuality Quality { get; set; }
-        public string QualityValue { get; set; }
 
     }
 }
