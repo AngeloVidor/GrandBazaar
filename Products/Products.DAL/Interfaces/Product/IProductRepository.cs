@@ -9,5 +9,6 @@ namespace Products.DAL.Interfaces
     public interface IProductRepository
     {
         Task<Product> AddNewProductAsync(Product product);
+        Task<Product> UpdateProductAsync(Product product);
     }
 }

@@ -9,5 +9,6 @@ namespace Products.BLL.Interfaces
     public interface IProductService
     {
         Task<ProductDto> AddNewProductAsync(ProductDto product);
+        Task<UpdateProductDto> UpdateProductAsync(UpdateProductDto product);
     }
 }

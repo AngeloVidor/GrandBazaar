@@ -52,11 +52,26 @@ namespace Products.API.Controllers
             }
         }
 
-        [HttpGet]
-        public async Task<IActionResult> HelloWorld()
+        [HttpPut("product")]
+        public async Task<IActionResult> UpdateProduct([FromBody] UpdateProductDto product)
         {
-            string hello = "Hello World!";
-            return Ok(hello);
+            try
+            {
+                var userIdString = HttpContext.Items["userId"]?.ToString();
+                if (userIdString == null)
+                {
+                    return StatusCode(401, "User must be logged in.");
+                }
+                long userId = long.Parse(userIdString);
+                product.Seller_Id = await _transfer.GetSellerIdAsync(userId);
+
+                var updatedProduct = await _productService.UpdateProductAsync(product);
+                return Ok(updatedProduct);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
     }
 }

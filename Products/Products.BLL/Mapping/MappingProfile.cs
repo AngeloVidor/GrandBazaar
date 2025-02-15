@@ -14,6 +14,7 @@ namespace Products.BLL.Mapping
         {
             CreateMap<Product, ProductDto>().ReverseMap();
             CreateMap<Product, ProductDisplayDto>().ReverseMap();
+            CreateMap<Product, UpdateProductDto>().ReverseMap();
         }
     }
 }

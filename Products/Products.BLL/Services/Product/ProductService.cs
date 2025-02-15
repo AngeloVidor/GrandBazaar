@@ -29,5 +29,12 @@ namespace Products.BLL.Services
             var response = await _productRepository.AddNewProductAsync(productEntity);
             return _mapper.Map<ProductDto>(response);
         }
+
+        public async Task<UpdateProductDto> UpdateProductAsync(UpdateProductDto product)
+        {
+            var productEntity = _mapper.Map<Product>(product);
+            var updatedProduct = await _productRepository.UpdateProductAsync(productEntity);
+            return _mapper.Map<UpdateProductDto>(updatedProduct);
+        }
     }
 }
