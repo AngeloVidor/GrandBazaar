@@ -180,3 +180,8 @@ C:\Users\angel\Desktop\GrandBazaar\Sellers\Sellers.API\obj\Debug\net8.0\ref\Sell
 C:\Users\angel\Desktop\GrandBazaar\Sellers\Sellers.API\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
 C:\Users\angel\Desktop\GrandBazaar\Sellers\Sellers.API\bin\Debug\net8.0\Microsoft.Extensions.FileProviders.Abstractions.dll
 C:\Users\angel\Desktop\GrandBazaar\Sellers\Sellers.API\bin\Debug\net8.0\Microsoft.Extensions.Hosting.Abstractions.dll
+C:\Users\angel\Desktop\GrandBazaar\Sellers\Sellers.API\bin\Debug\net8.0\AWSSDK.Core.dll
+C:\Users\angel\Desktop\GrandBazaar\Sellers\Sellers.API\bin\Debug\net8.0\AWSSDK.S3.dll
+C:\Users\angel\Desktop\GrandBazaar\Sellers\Sellers.API\bin\Debug\net8.0\DotNetEnv.dll
+C:\Users\angel\Desktop\GrandBazaar\Sellers\Sellers.API\bin\Debug\net8.0\Sprache.dll
+C:\Users\angel\Desktop\GrandBazaar\Sellers\Sellers.API\bin\Debug\net8.0\AWSSDK.Extensions.NETCore.Setup.dll

@@ -1,9 +1,15 @@
+using Amazon;
+using Amazon.Runtime;
+using Amazon.S3;
+using DotNetEnv;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Sellers.API.Middlewares;
 using Sellers.BLL.Interfaces;
 using Sellers.BLL.Interfaces.Filters;
 using Sellers.BLL.Interfaces.Provider;
+using Sellers.BLL.Interfaces.S3;
 using Sellers.BLL.Mapping;
 using Sellers.BLL.Messaging.Background;
 using Sellers.BLL.Messaging.Events.Interfaces;
@@ -11,6 +17,8 @@ using Sellers.BLL.Messaging.Events.Services;
 using Sellers.BLL.Services;
 using Sellers.BLL.Services.Filters;
 using Sellers.BLL.Services.Provider;
+using Sellers.BLL.Services.S3;
+using Sellers.BLL.Services.S3.Settings;
 using Sellers.DAL.Context;
 using Sellers.DAL.Interfaces;
 using Sellers.DAL.Interfaces.Filters;
@@ -20,6 +28,8 @@ using Sellers.DAL.Repositories.Filters;
 using Sellers.DAL.Repositories.Provider;
 
 var builder = WebApplication.CreateBuilder(args);
+
+Env.Load();
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -75,10 +85,21 @@ builder.Services.AddScoped<ISellersFiltersRepository, SellersFiltersRepository>(
 builder.Services.AddScoped<ISellersFiltersService, SellersFiltersService>();
 builder.Services.AddScoped<ISellerProviderRepository, SellerProviderRepository>();
 builder.Services.AddScoped<ISellerProviderService, SellerProviderService>();
+builder.Services.AddScoped<IS3StorageService, S3StorageService>();
 
-
+builder.Services.AddDefaultAWSOptions(builder.Configuration.GetAWSOptions());
+builder.Services.AddAWSService<IAmazonS3>();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
+
+builder.Services.Configure<AWSSettings>(options =>
+{
+    options.BucketName = Environment.GetEnvironmentVariable("AWS_BucketName");
+    options.AccessKey = Environment.GetEnvironmentVariable("AWS_ACCESS_KEY_ID");
+    options.SecretKey = Environment.GetEnvironmentVariable("AWS_SECRET_ACCESS_KEY");
+    options.Region = Environment.GetEnvironmentVariable("AWS_REGION");
+});
+
 
 
 var app = builder.Build();

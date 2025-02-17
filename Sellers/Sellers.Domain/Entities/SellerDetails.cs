@@ -18,6 +18,7 @@ namespace Sellers.Domain.Entities
         public DateTime JoinDate = DateTime.UtcNow;
         public long User_Id { get; set; }
         public IECategory MainCategory { get; set; }
+        public string image_url { get; set; }
 
     }
 }

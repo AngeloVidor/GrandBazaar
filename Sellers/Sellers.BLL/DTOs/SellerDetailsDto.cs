@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Sellers.Domain.Entities;
 
 namespace Sellers.BLL.DTOs
@@ -18,6 +19,9 @@ namespace Sellers.BLL.DTOs
         public DateTime JoinDate = DateTime.UtcNow;
         public long User_Id { get; set; }
         public IECategory MainCategory { get; set; }
+        public string image_url { get; set; }
+        public IFormFile ImageFile { get; set; }
+
 
     }
 }

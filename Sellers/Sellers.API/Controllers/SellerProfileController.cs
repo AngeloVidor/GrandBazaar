@@ -21,7 +21,7 @@ namespace Sellers.API.Controllers
         }
 
         [HttpPost("Profile")]
-        public async Task<IActionResult> AddNewProfileAsync([FromBody] SellerDetailsDto sellerDetails)
+        public async Task<IActionResult> AddNewProfileAsync([FromForm] SellerDetailsDto sellerDetails)
         {
             if (!ModelState.IsValid)
             {

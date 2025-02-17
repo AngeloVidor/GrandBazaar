@@ -47,6 +47,10 @@ namespace Sellers.DAL.Migrations
                     b.Property<long>("User_Id")
                         .HasColumnType("bigint");
 
+                    b.Property<string>("image_url")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("storeEmail")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
