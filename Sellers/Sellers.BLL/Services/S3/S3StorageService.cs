@@ -29,7 +29,6 @@ namespace Sellers.BLL.Services.S3
                 Console.WriteLine("SecretKey's null or empty");
             }
 
-            Console.WriteLine(_awsSettings.SecretKey);
 
             if (file == null || file.Length == 0)
             {

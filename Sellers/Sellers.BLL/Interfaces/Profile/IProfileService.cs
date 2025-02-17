@@ -9,6 +9,7 @@ namespace Sellers.BLL.Interfaces
     public interface IProfileService
     {
         Task<SellerDetailsDto> AddSellerProfileAsync(SellerDetailsDto sellerDetails);
+        Task<UpdatedSellerDetailsDto> UpdateSellerProfileAsync(UpdatedSellerDetailsDto sellerDetails);
         Task<SellerDetailsDto> GetMyProfileAsync(long userId);
 
     }

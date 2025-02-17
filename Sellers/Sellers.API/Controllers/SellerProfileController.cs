@@ -14,10 +14,12 @@ namespace Sellers.API.Controllers
     public class SellerProfileController : ControllerBase
     {
         private readonly IProfileService _profileService;
+        private readonly IProfileManagementService _profileManagementService;
 
-        public SellerProfileController(IProfileService profileService)
+        public SellerProfileController(IProfileService profileService, IProfileManagementService profileManagementService)
         {
             _profileService = profileService;
+            _profileManagementService = profileManagementService;
         }
 
         [HttpPost("Profile")]
@@ -64,6 +66,32 @@ namespace Sellers.API.Controllers
                 return StatusCode(500, ex.Message);
             }
 
+        }
+
+        [HttpPut("profile")]
+        public async Task<IActionResult> UpdateProfile([FromForm] UpdatedSellerDetailsDto sellerDetails)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                var userId = long.Parse(HttpContext.Items["userId"].ToString());
+                sellerDetails.Seller_Id = await _profileManagementService.GetSellerProfileIdByUserIdAsync(userId);
+
+                var updatedProfile = await _profileService.UpdateSellerProfileAsync(sellerDetails);
+                return Ok(updatedProfile);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return StatusCode(400, ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
 

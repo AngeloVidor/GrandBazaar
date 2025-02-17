@@ -50,5 +50,16 @@ namespace Sellers.BLL.Services
             return result;
 
         }
+
+        public async Task<UpdatedSellerDetailsDto> UpdateSellerProfileAsync(UpdatedSellerDetailsDto sellerDetails)
+        {
+            var sellerEntity = _mapper.Map<SellerDetails>(sellerDetails);
+
+            var imageUrl = await _storageService.UploadImagAsync(sellerDetails.ImageFile);
+            sellerEntity.image_url = imageUrl;
+
+            var response = await _profileRepository.UpdateSellerProfileAsync(sellerEntity);
+            return _mapper.Map<UpdatedSellerDetailsDto>(response);
+        }
     }
 }

@@ -13,6 +13,7 @@ namespace Sellers.BLL.Mapping
         public MappingProfile()
         {
             CreateMap<SellerDetails, SellerDetailsDto>().ReverseMap();
+            CreateMap<SellerDetails, UpdatedSellerDetailsDto>().ReverseMap();
         }
     }
 }
