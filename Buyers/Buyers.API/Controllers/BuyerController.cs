@@ -20,7 +20,7 @@ namespace Buyers.API.Controllers
         }
 
         [HttpPost("buyer")]
-        public async Task<IActionResult> AddBuyer([FromBody] BuyerDto buyer)
+        public async Task<IActionResult> AddBuyer([FromForm] BuyerDto buyer)
         {
             if (!ModelState.IsValid)
             {

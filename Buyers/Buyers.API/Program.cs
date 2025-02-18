@@ -1,16 +1,22 @@
+using Amazon.S3;
 using Buyers.API.Middlewares;
 using Buyers.BLL.Interfaces;
+using Buyers.BLL.Interfaces.S3;
 using Buyers.BLL.Mapping;
 using Buyers.BLL.Services;
+using Buyers.BLL.Services.S3;
 using Buyers.DAL.Context;
 using Buyers.DAL.Interfaces;
 using Buyers.DAL.Interfaces.Management;
 using Buyers.DAL.Repositories;
 using Buyers.DAL.Repositories.Management;
+using DotNetEnv;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+
+Env.Load();
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -60,8 +66,22 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddScoped<IBuyerRepository, BuyerRepository>();
 builder.Services.AddScoped<IBuyerService, BuyerService>();
 builder.Services.AddScoped<IBuyerManagementRepository, BuyerManagementRepository>();
+builder.Services.AddScoped<IS3StorageService, S3StorageService>();
+
+
+builder.Services.AddDefaultAWSOptions(builder.Configuration.GetAWSOptions());
+builder.Services.AddAWSService<IAmazonS3>();
+
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
+
+builder.Services.Configure<AWSSettings>(options =>
+{
+    options.BucketName = Environment.GetEnvironmentVariable("AWS_BucketName");
+    options.AccessKey = Environment.GetEnvironmentVariable("AWS_ACCESS_KEY_ID");
+    options.SecretKey = Environment.GetEnvironmentVariable("AWS_SECRET_ACCESS_KEY");
+    options.Region = Environment.GetEnvironmentVariable("AWS_REGION");
+});
 
 
 var app = builder.Build();

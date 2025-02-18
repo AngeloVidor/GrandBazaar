@@ -14,6 +14,6 @@ namespace Buyers.Domain.Domain
         public long User_Id { get; set; }
         public string Biography { get; set; }
         public DateTime JoinDate { get; set; } = DateTime.UtcNow;
-        //public string ImageUrl { get; set; }
+        public string ImageUrl { get; set; }
     }
 }

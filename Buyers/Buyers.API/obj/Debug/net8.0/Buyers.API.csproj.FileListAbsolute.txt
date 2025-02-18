@@ -175,3 +175,8 @@ C:\Users\angel\Desktop\GrandBazaar\Buyers\Buyers.API\obj\Debug\net8.0\Buyers.API
 C:\Users\angel\Desktop\GrandBazaar\Buyers\Buyers.API\obj\Debug\net8.0\Buyers.API.genruntimeconfig.cache
 C:\Users\angel\Desktop\GrandBazaar\Buyers\Buyers.API\obj\Debug\net8.0\ref\Buyers.API.dll
 C:\Users\angel\Desktop\GrandBazaar\Buyers\Buyers.API\bin\Debug\net8.0\AutoMapper.dll
+C:\Users\angel\Desktop\GrandBazaar\Buyers\Buyers.API\bin\Debug\net8.0\AWSSDK.Core.dll
+C:\Users\angel\Desktop\GrandBazaar\Buyers\Buyers.API\bin\Debug\net8.0\AWSSDK.Extensions.NETCore.Setup.dll
+C:\Users\angel\Desktop\GrandBazaar\Buyers\Buyers.API\bin\Debug\net8.0\AWSSDK.S3.dll
+C:\Users\angel\Desktop\GrandBazaar\Buyers\Buyers.API\bin\Debug\net8.0\DotNetEnv.dll
+C:\Users\angel\Desktop\GrandBazaar\Buyers\Buyers.API\bin\Debug\net8.0\Sprache.dll
