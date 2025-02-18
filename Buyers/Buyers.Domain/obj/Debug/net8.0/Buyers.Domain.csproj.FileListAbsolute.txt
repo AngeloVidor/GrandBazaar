@@ -1,0 +1,12 @@
+C:\Users\angel\Desktop\GrandBazaar\Buyers\Buyers.Domain\bin\Debug\net8.0\Buyers.Domain.deps.json
+C:\Users\angel\Desktop\GrandBazaar\Buyers\Buyers.Domain\bin\Debug\net8.0\Buyers.Domain.dll
+C:\Users\angel\Desktop\GrandBazaar\Buyers\Buyers.Domain\bin\Debug\net8.0\Buyers.Domain.pdb
+C:\Users\angel\Desktop\GrandBazaar\Buyers\Buyers.Domain\obj\Debug\net8.0\Buyers.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\angel\Desktop\GrandBazaar\Buyers\Buyers.Domain\obj\Debug\net8.0\Buyers.Domain.AssemblyInfoInputs.cache
+C:\Users\angel\Desktop\GrandBazaar\Buyers\Buyers.Domain\obj\Debug\net8.0\Buyers.Domain.AssemblyInfo.cs
+C:\Users\angel\Desktop\GrandBazaar\Buyers\Buyers.Domain\obj\Debug\net8.0\Buyers.Domain.csproj.CoreCompileInputs.cache
+C:\Users\angel\Desktop\GrandBazaar\Buyers\Buyers.Domain\obj\Debug\net8.0\Buyers.Domain.sourcelink.json
+C:\Users\angel\Desktop\GrandBazaar\Buyers\Buyers.Domain\obj\Debug\net8.0\Buyers.Domain.dll
+C:\Users\angel\Desktop\GrandBazaar\Buyers\Buyers.Domain\obj\Debug\net8.0\refint\Buyers.Domain.dll
+C:\Users\angel\Desktop\GrandBazaar\Buyers\Buyers.Domain\obj\Debug\net8.0\Buyers.Domain.pdb
+C:\Users\angel\Desktop\GrandBazaar\Buyers\Buyers.Domain\obj\Debug\net8.0\ref\Buyers.Domain.dll
