@@ -4,7 +4,9 @@ using Buyers.BLL.Mapping;
 using Buyers.BLL.Services;
 using Buyers.DAL.Context;
 using Buyers.DAL.Interfaces;
+using Buyers.DAL.Interfaces.Management;
 using Buyers.DAL.Repositories;
+using Buyers.DAL.Repositories.Management;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
@@ -57,6 +59,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddScoped<IBuyerRepository, BuyerRepository>();
 builder.Services.AddScoped<IBuyerService, BuyerService>();
+builder.Services.AddScoped<IBuyerManagementRepository, BuyerManagementRepository>();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 

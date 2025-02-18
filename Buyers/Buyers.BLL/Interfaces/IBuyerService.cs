@@ -9,5 +9,6 @@ namespace Buyers.BLL.Interfaces
     public interface IBuyerService
     {
         Task<BuyerDto> AddNewBuyerAsync(BuyerDto buyer);
+        Task<BuyerDto> GetMyProfileAsync(long buyerId);
     }
 }

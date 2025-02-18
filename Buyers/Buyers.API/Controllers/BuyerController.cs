@@ -38,5 +38,24 @@ namespace Buyers.API.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
+        [HttpGet("me")]
+        public async Task<IActionResult> Me()
+        {
+            try
+            {
+                var userId = long.Parse(HttpContext.Items["userId"].ToString());
+                var buyer = await _buyerService.GetMyProfileAsync(userId);
+                return Ok(buyer);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
     }
 }

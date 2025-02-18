@@ -9,5 +9,6 @@ namespace Buyers.DAL.Interfaces
     public interface IBuyerRepository
     {
         Task<Buyer> AddNewBuyerAsync(Buyer buyer);
+        Task<Buyer> GetMyProfileAsync(long userId);
     }
 }

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Buyers.DAL.Context;
 using Buyers.DAL.Interfaces;
 using Buyers.Domain.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace Buyers.DAL.Repositories
 {
@@ -22,6 +23,11 @@ namespace Buyers.DAL.Repositories
             await _dbContext.Buyers.AddAsync(buyer);
             await _dbContext.SaveChangesAsync();
             return buyer;
+        }
+
+        public async Task<Buyer> GetMyProfileAsync(long userId)
+        {
+            return await _dbContext.Buyers.FirstOrDefaultAsync(x => x.User_Id == userId);
         }
     }
 }
