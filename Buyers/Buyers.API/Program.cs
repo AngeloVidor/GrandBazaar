@@ -1,4 +1,10 @@
+using Buyers.API.Middlewares;
+using Buyers.BLL.Interfaces;
+using Buyers.BLL.Mapping;
+using Buyers.BLL.Services;
 using Buyers.DAL.Context;
+using Buyers.DAL.Interfaces;
+using Buyers.DAL.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
@@ -48,6 +54,13 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+
+builder.Services.AddScoped<IBuyerRepository, BuyerRepository>();
+builder.Services.AddScoped<IBuyerService, BuyerService>();
+
+builder.Services.AddAutoMapper(typeof(MappingProfile));
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -56,6 +69,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<JwtMiddleware>();
+
 
 app.UseHttpsRedirection();
 

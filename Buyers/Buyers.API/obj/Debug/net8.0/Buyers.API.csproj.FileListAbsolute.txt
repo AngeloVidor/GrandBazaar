@@ -174,3 +174,4 @@ C:\Users\angel\Desktop\GrandBazaar\Buyers\Buyers.API\obj\Debug\net8.0\refint\Buy
 C:\Users\angel\Desktop\GrandBazaar\Buyers\Buyers.API\obj\Debug\net8.0\Buyers.API.pdb
 C:\Users\angel\Desktop\GrandBazaar\Buyers\Buyers.API\obj\Debug\net8.0\Buyers.API.genruntimeconfig.cache
 C:\Users\angel\Desktop\GrandBazaar\Buyers\Buyers.API\obj\Debug\net8.0\ref\Buyers.API.dll
+C:\Users\angel\Desktop\GrandBazaar\Buyers\Buyers.API\bin\Debug\net8.0\AutoMapper.dll
