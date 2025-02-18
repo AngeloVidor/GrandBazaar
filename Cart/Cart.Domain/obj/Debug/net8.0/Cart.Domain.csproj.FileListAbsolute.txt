@@ -1,0 +1,12 @@
+C:\Users\angel\Desktop\GrandBazaar\Cart\Cart.Domain\bin\Debug\net8.0\Cart.Domain.deps.json
+C:\Users\angel\Desktop\GrandBazaar\Cart\Cart.Domain\bin\Debug\net8.0\Cart.Domain.dll
+C:\Users\angel\Desktop\GrandBazaar\Cart\Cart.Domain\bin\Debug\net8.0\Cart.Domain.pdb
+C:\Users\angel\Desktop\GrandBazaar\Cart\Cart.Domain\obj\Debug\net8.0\Cart.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\angel\Desktop\GrandBazaar\Cart\Cart.Domain\obj\Debug\net8.0\Cart.Domain.AssemblyInfoInputs.cache
+C:\Users\angel\Desktop\GrandBazaar\Cart\Cart.Domain\obj\Debug\net8.0\Cart.Domain.AssemblyInfo.cs
+C:\Users\angel\Desktop\GrandBazaar\Cart\Cart.Domain\obj\Debug\net8.0\Cart.Domain.csproj.CoreCompileInputs.cache
+C:\Users\angel\Desktop\GrandBazaar\Cart\Cart.Domain\obj\Debug\net8.0\Cart.Domain.sourcelink.json
+C:\Users\angel\Desktop\GrandBazaar\Cart\Cart.Domain\obj\Debug\net8.0\Cart.Domain.dll
+C:\Users\angel\Desktop\GrandBazaar\Cart\Cart.Domain\obj\Debug\net8.0\refint\Cart.Domain.dll
+C:\Users\angel\Desktop\GrandBazaar\Cart\Cart.Domain\obj\Debug\net8.0\Cart.Domain.pdb
+C:\Users\angel\Desktop\GrandBazaar\Cart\Cart.Domain\obj\Debug\net8.0\ref\Cart.Domain.dll
