@@ -1,9 +1,14 @@
 using Amazon.S3;
 using Buyers.API.Middlewares;
 using Buyers.BLL.Interfaces;
+using Buyers.BLL.Interfaces.Management;
 using Buyers.BLL.Interfaces.S3;
 using Buyers.BLL.Mapping;
+using Buyers.BLL.Messaging.Background;
+using Buyers.BLL.Messaging.Events.Interfaces;
+using Buyers.BLL.Messaging.Events.Services;
 using Buyers.BLL.Services;
+using Buyers.BLL.Services.Management;
 using Buyers.BLL.Services.S3;
 using Buyers.DAL.Context;
 using Buyers.DAL.Interfaces;
@@ -67,6 +72,10 @@ builder.Services.AddScoped<IBuyerRepository, BuyerRepository>();
 builder.Services.AddScoped<IBuyerService, BuyerService>();
 builder.Services.AddScoped<IBuyerManagementRepository, BuyerManagementRepository>();
 builder.Services.AddScoped<IS3StorageService, S3StorageService>();
+builder.Services.AddScoped<IBuyerManagementService, BuyerManagementService>();
+
+builder.Services.AddScoped<ITransferCartToBuyerEvent, TransferCartToBuyerEvent>();
+builder.Services.AddSingleton<IHostedService, TransferCartToBuyerBackgroundService>();
 
 
 builder.Services.AddDefaultAWSOptions(builder.Configuration.GetAWSOptions());
