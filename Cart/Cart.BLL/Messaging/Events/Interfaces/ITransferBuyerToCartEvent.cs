@@ -7,7 +7,7 @@ namespace Cart.BLL.Messaging.Events.Interfaces
 {
     public interface ITransferBuyerToCartEvent
     {
-        void Publish(long userId);
+        Task<long> Publish(long userId);
         Task<long> GetBuyerIdAsync(long userId);
     }
 }

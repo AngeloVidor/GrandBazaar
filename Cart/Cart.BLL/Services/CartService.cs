@@ -28,11 +28,8 @@ namespace Cart.BLL.Services
         {
             var cartEntity = _mapper.Map<ShoppingCart>(cartDto);
 
-            cartDto.Buyer_Id = await _transferBuyerToCartEvent.GetBuyerIdAsync(userId);
-            if(cartDto.Buyer_Id <= 0)
-            {
-                throw new InvalidOperationException("Buyer not found");
-            }
+            cartEntity.Buyer_Id = await _transferBuyerToCartEvent.GetBuyerIdAsync(userId);
+            Console.WriteLine($"BuyerId: {cartEntity.Buyer_Id}");
 
             var response = await _cartRepository.AddNewCartAsync(cartEntity);
             return _mapper.Map<ShoppingCartDto>(response);

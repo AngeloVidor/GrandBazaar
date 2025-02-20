@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +16,7 @@ namespace Cart.BLL.Messaging.Events.Services
     {
         private readonly IConnection _connection;
         private readonly IModel _channel;
-        private readonly TaskCompletionSource<long> _responseTaskSource = new TaskCompletionSource<long>();
+        private readonly ConcurrentDictionary<string, TaskCompletionSource<long>> _pendingResponses = new ConcurrentDictionary<string, TaskCompletionSource<long>>();
 
 
         public TransferBuyerToCartEvent()
@@ -25,27 +26,47 @@ namespace Cart.BLL.Messaging.Events.Services
             _channel = _connection.CreateModel();
 
             _channel.QueueDeclare(queue: "cart.to.buyer.request", durable: true, exclusive: false, autoDelete: false, arguments: null);
+            _channel.QueueDeclare(queue: "cart.to.buyer.response", durable: true, exclusive: false, autoDelete: false, arguments: null);
 
             var consumer = new EventingBasicConsumer(_channel);
             consumer.Received += (model, ea) =>
             {
-                var body = ea.Body.ToArray();
-                var message = Encoding.UTF8.GetString(body);
-                var result = JsonConvert.DeserializeObject<CartToBuyerResponse>(message);
-                var response = new CartToBuyerResponse
+                try
                 {
-                    User_Id = result.User_Id,
-                    Buyer_Id = result.Buyer_Id,
-                    CorrelationId = result.CorrelationId
-                };
+                    var body = ea.Body.ToArray();
+                    var message = Encoding.UTF8.GetString(body);
 
-                _channel.BasicAck(ea.DeliveryTag, false);
-                _responseTaskSource.TrySetResult(result.Buyer_Id);
+                    var result = JsonConvert.DeserializeObject<CartToBuyerResponse>(message);
+                    if (result == null)
+                    {
+                        _channel.BasicNack(ea.DeliveryTag, false, requeue: false);
+                        return;
+                    }
+
+                    Console.WriteLine("Trying to access dictionary...");
+                    if (_pendingResponses.TryGetValue(result.CorrelationId, out var tcs))
+                    {
+                        tcs.TrySetResult(result.Buyer_Id);
+                        _pendingResponses.TryRemove(result.CorrelationId, out _);
+                    }
+                    else
+                    {
+                        Console.WriteLine($"CorrelationId not found: {result.CorrelationId}");
+                    }
+
+                    _channel.BasicAck(ea.DeliveryTag, false);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error proccessing message: {ex.Message}");
+                    _channel.BasicNack(ea.DeliveryTag, false, requeue: true);
+                }
             };
+
             _channel.BasicConsume(queue: "cart.to.buyer.response", autoAck: false, consumer: consumer);
         }
 
-        public void Publish(long userId)
+        public async Task<long> Publish(long userId)
         {
             System.Console.WriteLine("Publishing...");
             var message = new CartToBuyerRequest
@@ -58,16 +79,22 @@ namespace Cart.BLL.Messaging.Events.Services
 
             var properties = _channel.CreateBasicProperties();
             properties.CorrelationId = message.CorrelationId;
+            Console.WriteLine("CorrelationId sent: " + properties.CorrelationId);
+
             properties.ReplyTo = "cart.to.buyer.response";
 
+            var tcs = new TaskCompletionSource<long>();
+            _pendingResponses.TryAdd(message.CorrelationId, tcs);
+
+            Console.WriteLine("Published!");
             _channel.BasicPublish(exchange: "", routingKey: "cart.to.buyer.request", basicProperties: properties, body: body);
 
+            return await tcs.Task;
         }
 
         public async Task<long> GetBuyerIdAsync(long userId)
         {
-            Publish(userId);
-            return await _responseTaskSource.Task;
+            return await Publish(userId);
         }
     }
 }
