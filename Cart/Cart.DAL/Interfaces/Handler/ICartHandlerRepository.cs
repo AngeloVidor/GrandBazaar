@@ -9,5 +9,6 @@ namespace Cart.DAL.Interfaces.Handler
     {
         Task<long> GetCartIdByUserIdAsync(long userId);
         Task<long> GetBuyerIdByCartIdAsync(long cartId);
+        Task<bool> CartAlreadyExistsAsync(long userId);
     }
 }

@@ -38,7 +38,7 @@ namespace Cart.API.Controllers
                 var addedItem = await _cartService.AddItemIntoCartAsync(item, userId);
                 return Ok(addedItem);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return StatusCode(500, ex.Message);
             }

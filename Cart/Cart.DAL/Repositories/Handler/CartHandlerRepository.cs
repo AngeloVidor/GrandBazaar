@@ -28,5 +28,18 @@ namespace Cart.DAL.Repositories.Handler
             var userCart = await _dbContext.Carts.FirstOrDefaultAsync(x => x.User_Id == userId);
             return userCart.Cart_Id;
         }
+
+        public async Task<bool> CartAlreadyExistsAsync(long userId)
+        {
+            var cart = _dbContext.Carts.FirstOrDefaultAsync(x => x.User_Id == userId);
+            if (cart != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
