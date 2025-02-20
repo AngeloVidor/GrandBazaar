@@ -28,6 +28,7 @@ namespace Cart.BLL.Services
         {
             var cartEntity = _mapper.Map<ShoppingCart>(cartDto);
 
+            cartEntity.User_Id = userId;
             cartEntity.Buyer_Id = await _publisher.GetBuyerIdAsync(userId);
             Console.WriteLine($"BuyerId: {cartEntity.Buyer_Id}");
 

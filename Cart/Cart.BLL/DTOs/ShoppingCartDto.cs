@@ -11,5 +11,6 @@ namespace Cart.BLL.DTOs
         [Key]
         public long Cart_Id { get; set; }
         public long Buyer_Id { get; set; }
+        public long User_Id { get; set; }
     }
 }
