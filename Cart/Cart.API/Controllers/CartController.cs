@@ -25,10 +25,14 @@ namespace Cart.API.Controllers
             try
             {
                 long userId = long.Parse(HttpContext.Items["userId"].ToString());
+                if (userId == null || userId <= 0)
+                {
+                    return StatusCode(400, "User not found");
+                }
                 var newCart = await _cartService.AddNewCartAsync(cart, userId);
                 return Ok(newCart);
             }
-            catch(InvalidOperationException ex)
+            catch (InvalidOperationException ex)
             {
                 return StatusCode(400, ex.Message);
             }

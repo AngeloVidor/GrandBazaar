@@ -31,6 +31,13 @@ namespace Cart.BLL.Services
         {
             var cartEntity = _mapper.Map<ShoppingCart>(cartDto);
 
+            Console.WriteLine($"UserId: {userId}");
+
+            if (userId <= 0)
+            {
+                throw new Exception("User Id is required");
+            }
+
             var cartExists = await _cartHandlerRepository.CartAlreadyExistsAsync(userId);
             if (cartExists)
             {
