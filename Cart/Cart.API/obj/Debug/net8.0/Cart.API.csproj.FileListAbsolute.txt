@@ -5,6 +5,7 @@ C:\Users\angel\Desktop\GrandBazaar\Cart\Cart.API\bin\Debug\net8.0\Cart.API.deps.
 C:\Users\angel\Desktop\GrandBazaar\Cart\Cart.API\bin\Debug\net8.0\Cart.API.runtimeconfig.json
 C:\Users\angel\Desktop\GrandBazaar\Cart\Cart.API\bin\Debug\net8.0\Cart.API.dll
 C:\Users\angel\Desktop\GrandBazaar\Cart\Cart.API\bin\Debug\net8.0\Cart.API.pdb
+C:\Users\angel\Desktop\GrandBazaar\Cart\Cart.API\bin\Debug\net8.0\AutoMapper.dll
 C:\Users\angel\Desktop\GrandBazaar\Cart\Cart.API\bin\Debug\net8.0\Azure.Core.dll
 C:\Users\angel\Desktop\GrandBazaar\Cart\Cart.API\bin\Debug\net8.0\Azure.Identity.dll
 C:\Users\angel\Desktop\GrandBazaar\Cart\Cart.API\bin\Debug\net8.0\Humanizer.dll
@@ -45,6 +46,8 @@ C:\Users\angel\Desktop\GrandBazaar\Cart\Cart.API\bin\Debug\net8.0\Microsoft.Open
 C:\Users\angel\Desktop\GrandBazaar\Cart\Cart.API\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
 C:\Users\angel\Desktop\GrandBazaar\Cart\Cart.API\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
 C:\Users\angel\Desktop\GrandBazaar\Cart\Cart.API\bin\Debug\net8.0\Mono.TextTemplating.dll
+C:\Users\angel\Desktop\GrandBazaar\Cart\Cart.API\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\angel\Desktop\GrandBazaar\Cart\Cart.API\bin\Debug\net8.0\RabbitMQ.Client.dll
 C:\Users\angel\Desktop\GrandBazaar\Cart\Cart.API\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\angel\Desktop\GrandBazaar\Cart\Cart.API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\angel\Desktop\GrandBazaar\Cart\Cart.API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -174,6 +177,3 @@ C:\Users\angel\Desktop\GrandBazaar\Cart\Cart.API\obj\Debug\net8.0\refint\Cart.AP
 C:\Users\angel\Desktop\GrandBazaar\Cart\Cart.API\obj\Debug\net8.0\Cart.API.pdb
 C:\Users\angel\Desktop\GrandBazaar\Cart\Cart.API\obj\Debug\net8.0\Cart.API.genruntimeconfig.cache
 C:\Users\angel\Desktop\GrandBazaar\Cart\Cart.API\obj\Debug\net8.0\ref\Cart.API.dll
-C:\Users\angel\Desktop\GrandBazaar\Cart\Cart.API\bin\Debug\net8.0\AutoMapper.dll
-C:\Users\angel\Desktop\GrandBazaar\Cart\Cart.API\bin\Debug\net8.0\Newtonsoft.Json.dll
-C:\Users\angel\Desktop\GrandBazaar\Cart\Cart.API\bin\Debug\net8.0\RabbitMQ.Client.dll

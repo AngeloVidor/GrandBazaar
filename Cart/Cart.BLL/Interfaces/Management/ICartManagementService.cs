@@ -8,6 +8,6 @@ namespace Cart.BLL.Interfaces.Management
 {
     public interface ICartManagementService
     {
-        Task<ItemDto> AddItemIntoCartAsync(ItemDto item);
+        Task<ItemDto> AddItemIntoCartAsync(ItemDto item, long userId);
     }
 }
