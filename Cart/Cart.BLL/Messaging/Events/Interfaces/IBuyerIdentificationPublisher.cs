@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Cart.BLL.Messaging.Events.Interfaces
 {
-    public interface ITransferBuyerToCartEvent
+    public interface IBuyerIdentificationPublisher
     {
         Task<long> Publish(long userId);
         Task<long> GetBuyerIdAsync(long userId);

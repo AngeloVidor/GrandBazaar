@@ -74,7 +74,7 @@ builder.Services.AddScoped<IBuyerManagementRepository, BuyerManagementRepository
 builder.Services.AddScoped<IS3StorageService, S3StorageService>();
 builder.Services.AddScoped<IBuyerManagementService, BuyerManagementService>();
 
-builder.Services.AddScoped<ITransferCartToBuyerEvent, TransferCartToBuyerEvent>();
+builder.Services.AddScoped<IBuyerIdentificationPublisher, BuyerIdentificationPublisher>();
 builder.Services.AddSingleton<IHostedService, TransferCartToBuyerBackgroundService>();
 
 

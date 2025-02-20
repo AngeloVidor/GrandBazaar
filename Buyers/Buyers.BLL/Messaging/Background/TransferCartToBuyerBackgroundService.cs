@@ -19,7 +19,7 @@ namespace Buyers.BLL.Messaging.Background
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            var transferUserToSellerEvent = _serviceScopeFactory.CreateScope().ServiceProvider.GetRequiredService<ITransferCartToBuyerEvent>();
+            var transferUserToSellerEvent = _serviceScopeFactory.CreateScope().ServiceProvider.GetRequiredService<IBuyerIdentificationPublisher>();
             transferUserToSellerEvent.Consume();
         }
     }

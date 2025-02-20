@@ -58,7 +58,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddScoped<ICartRepository, CartRepository>();
 builder.Services.AddScoped<ICartService, CartService>();
-builder.Services.AddSingleton<ITransferBuyerToCartEvent, TransferBuyerToCartEvent>();
+builder.Services.AddSingleton<IBuyerIdentificationPublisher, BuyerIdentificationPublisher>();
 builder.Services.AddScoped<TaskCompletionSource<long>>();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));

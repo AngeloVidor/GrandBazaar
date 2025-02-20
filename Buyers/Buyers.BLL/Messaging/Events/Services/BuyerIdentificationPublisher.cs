@@ -13,14 +13,14 @@ using RabbitMQ.Client.Events;
 
 namespace Buyers.BLL.Messaging.Events.Services
 {
-    public class TransferCartToBuyerEvent : ITransferCartToBuyerEvent
+    public class BuyerIdentificationPublisher : IBuyerIdentificationPublisher
     {
         private readonly IBuyerManagementService _buyerManagementService;
         private readonly IServiceScopeFactory _serviceScopeFactory;
         private readonly IConnection _connection;
         private readonly IModel _channel;
 
-        public TransferCartToBuyerEvent(IBuyerManagementService buyerManagementService, IServiceScopeFactory serviceScopeFactory)
+        public BuyerIdentificationPublisher(IBuyerManagementService buyerManagementService, IServiceScopeFactory serviceScopeFactory)
         {
             var factory = new ConnectionFactory { HostName = "Localhost" };
             _connection = factory.CreateConnection();

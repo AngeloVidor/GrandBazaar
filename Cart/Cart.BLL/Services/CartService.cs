@@ -15,20 +15,20 @@ namespace Cart.BLL.Services
     {
         private readonly ICartRepository _cartRepository;
         private readonly IMapper _mapper;
-        private readonly ITransferBuyerToCartEvent _transferBuyerToCartEvent;
+        private readonly IBuyerIdentificationPublisher _publisher;
 
-        public CartService(ICartRepository cartRepository, IMapper mapper, ITransferBuyerToCartEvent transferBuyerToCartEvent)
+        public CartService(ICartRepository cartRepository, IMapper mapper, IBuyerIdentificationPublisher publisher)
         {
             _cartRepository = cartRepository;
             _mapper = mapper;
-            _transferBuyerToCartEvent = transferBuyerToCartEvent;
+            _publisher = publisher;
         }
 
         public async Task<ShoppingCartDto> AddNewCartAsync(ShoppingCartDto cartDto, long userId)
         {
             var cartEntity = _mapper.Map<ShoppingCart>(cartDto);
 
-            cartEntity.Buyer_Id = await _transferBuyerToCartEvent.GetBuyerIdAsync(userId);
+            cartEntity.Buyer_Id = await _publisher.GetBuyerIdAsync(userId);
             Console.WriteLine($"BuyerId: {cartEntity.Buyer_Id}");
 
             var response = await _cartRepository.AddNewCartAsync(cartEntity);
