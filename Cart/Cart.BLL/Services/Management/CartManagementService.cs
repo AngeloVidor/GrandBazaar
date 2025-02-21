@@ -30,12 +30,17 @@ namespace Cart.BLL.Services.Management
         public async Task<ItemDto> AddItemIntoCartAsync(ItemDto item, long userId)
         {
             var itemEntity = _mapper.Map<Item>(item);
-            
-            _publisher.Publish(itemEntity.Quantity, itemEntity.Product_Id);
 
+            var response = await _publisher.Publish(itemEntity.Quantity, itemEntity.Product_Id);
+            if (response.ErrorMessage != null)
+            {
+                throw new Exception($"Failed to add item to cart: {response.ErrorMessage}");
+            }
+
+            itemEntity.TotalPrice += response.Price;
             itemEntity.Cart_Id = await _cartHandlerService.GetCartIdByUserIdAsync(userId);
             itemEntity.Buyer_Id = await _cartHandlerService.GetBuyerIdByCartIdAsync(itemEntity.Cart_Id);
-            
+
             var addedItem = await _cartManagementRepository.AddItemIntoCartAsync(itemEntity);
             return _mapper.Map<ItemDto>(addedItem);
         }

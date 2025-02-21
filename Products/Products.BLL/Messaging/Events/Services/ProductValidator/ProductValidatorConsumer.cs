@@ -68,27 +68,55 @@ namespace Products.BLL.Messaging.Events.Services.BuyerIdentification
                     bool isValid = await ValidateProductAsync(response);
                     if (!isValid)
                     {
-                        throw new Exception("Product is not valid or not enough stock");
+                        var errorResponse = new ProductValidatorResponse
+                        {
+                            CorrelationId = correlationId,
+                            IsAvailable = false,
+                            ErrorMessage = "Product is not valid or not enough stock"
+                        };
+                        Publish(errorResponse, replyTo);
+                        _channel.BasicAck(deliveryTag: ea.DeliveryTag, multiple: false);
+                        return;
                     }
 
                     var product = await _productProviderService.GetProductByIdAsync(response.Product_Id);
+                    if (product == null)
+                    {
+                        var errorResponse = new ProductValidatorResponse
+                        {
+                            CorrelationId = correlationId,
+                            IsAvailable = false,
+                            ErrorMessage = "Product not found"
+                        };
+                        Publish(errorResponse, replyTo);
+                        _channel.BasicAck(deliveryTag: ea.DeliveryTag, multiple: false);
+                        return;
+                    }
                     var responseMessage = new ProductValidatorResponse
                     {
                         CorrelationId = correlationId,
                         Quantity = product?.StockQuantity ?? 0,
                         Product_Id = product?.Product_Id ?? 0,
-                        IsAvailable = isValid
+                        IsAvailable = isValid,
+                        Price = product?.Price ?? 0
                     };
                     Publish(responseMessage, replyTo);
                     _channel.BasicAck(deliveryTag: ea.DeliveryTag, multiple: false);
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Error processing message: {ex.Message}");
-                    _channel.BasicNack(deliveryTag: ea.DeliveryTag, multiple: false, requeue: true);
+                    var errorResponse = new ProductValidatorResponse
+                    {
+                        CorrelationId = ea.BasicProperties.CorrelationId,
+                        IsAvailable = false,
+                        ErrorMessage = ex.Message
+                    };
+
+                    Publish(errorResponse, ea.BasicProperties.ReplyTo);
+                    _channel.BasicNack(deliveryTag: ea.DeliveryTag, multiple: false, requeue: false);
+
+
                 }
-
-
             };
             _channel.BasicConsume(queue: "product.validator.request", autoAck: false, consumer: consumer);
         }

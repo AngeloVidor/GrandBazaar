@@ -7,6 +7,7 @@ using Cart.BLL.Messaging.Events.Interfaces;
 using Cart.BLL.Messaging.Events.Interfaces.ProductValidator;
 using Cart.BLL.Messaging.Events.Services;
 using Cart.BLL.Messaging.Events.Services.ProductValidator;
+using Cart.BLL.Messaging.Messages.ProductValidator;
 using Cart.BLL.Services;
 using Cart.BLL.Services.Handler;
 using Cart.BLL.Services.Management;
@@ -71,7 +72,10 @@ builder.Services.AddScoped<ICartManagementService, CartManagementService>();
 builder.Services.AddScoped<ICartHandlerRepository, CartHandlerRepository>();
 builder.Services.AddScoped<ICartHandlerService, CartHandlerService>();
 
-builder.Services.AddScoped<IProductValidatorPublisher, ProductValidatorPublisher>();
+builder.Services.AddSingleton<IProductValidatorPublisher, ProductValidatorPublisher>();
+builder.Services.AddScoped<TaskCompletionSource<ProductValidatorResponse>>();
+
+
 
 builder.Services.AddScoped<ICartRepository, CartRepository>();
 builder.Services.AddScoped<ICartService, CartService>();

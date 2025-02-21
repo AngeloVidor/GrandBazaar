@@ -11,5 +11,8 @@ namespace Cart.BLL.Messaging.Messages.ProductValidator
         public int Quantity { get; set; }
         public long Product_Id { get; set; }
         public bool IsAvailable { get; set; }
+        public decimal Price { get; set; }
+        public string ErrorMessage { get; set; }
+
     }
 }
