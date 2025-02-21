@@ -5,17 +5,22 @@ using Products.BLL.Interfaces;
 using Products.BLL.Interfaces.Filters;
 using Products.BLL.Interfaces.Provider;
 using Products.BLL.Mapping;
+using Products.BLL.Messaging.Background;
 using Products.BLL.Messaging.Events.Interfaces;
+using Products.BLL.Messaging.Events.Interfaces.BuyerIdentification;
 using Products.BLL.Messaging.Events.Services;
+using Products.BLL.Messaging.Events.Services.BuyerIdentification;
 using Products.BLL.Services;
 using Products.BLL.Services.Filters;
 using Products.BLL.Services.Provider;
 using Products.DAL.Context;
 using Products.DAL.Interfaces;
 using Products.DAL.Interfaces.Filters;
+using Products.DAL.Interfaces.Management;
 using Products.DAL.Interfaces.Provider;
 using Products.DAL.Repositories;
 using Products.DAL.Repositories.Filters;
+using Products.DAL.Repositories.Management;
 using Products.DAL.Repositories.Provider;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -66,12 +71,19 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductService, ProductService>();
+
 builder.Services.AddScoped<ITransferUserToSellerEvent, TransferUserToSellerEvent>();
 builder.Services.AddScoped<TaskCompletionSource<long>>();
+
 builder.Services.AddScoped<IProductProviderRepository, ProductProviderRepository>();
 builder.Services.AddScoped<IProductProviderService, ProductProviderService>();
 builder.Services.AddScoped<IProductFilterRepository, ProductFilterRepository>();
 builder.Services.AddScoped<IProductFilterService, ProductFilterService>();
+
+builder.Services.AddScoped<IProductManagementRepository, ProductManagementRepository>();
+builder.Services.AddScoped<IProductValidatorConsumer, ProductValidatorConsumer>();
+
+builder.Services.AddSingleton<IHostedService, ServiceBackground>();
 
 
 

@@ -177,3 +177,6 @@ C:\Users\angel\Desktop\GrandBazaar\Products\Products.API\obj\Debug\net8.0\ref\Pr
 C:\Users\angel\Desktop\GrandBazaar\Products\Products.API\bin\Debug\net8.0\AutoMapper.dll
 C:\Users\angel\Desktop\GrandBazaar\Products\Products.API\bin\Debug\net8.0\Newtonsoft.Json.dll
 C:\Users\angel\Desktop\GrandBazaar\Products\Products.API\bin\Debug\net8.0\RabbitMQ.Client.dll
+C:\Users\angel\Desktop\GrandBazaar\Products\Products.API\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+C:\Users\angel\Desktop\GrandBazaar\Products\Products.API\bin\Debug\net8.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\angel\Desktop\GrandBazaar\Products\Products.API\bin\Debug\net8.0\Microsoft.Extensions.Hosting.Abstractions.dll
