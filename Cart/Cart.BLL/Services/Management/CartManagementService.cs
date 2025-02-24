@@ -72,4 +72,3 @@ namespace Cart.BLL.Services.Management
         }
     }
 }
-

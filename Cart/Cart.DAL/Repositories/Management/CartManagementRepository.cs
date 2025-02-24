@@ -20,10 +20,23 @@ namespace Cart.DAL.Repositories.Management
 
         public async Task<Item> AddItemIntoCartAsync(Item item)
         {
-            await _dbContext.Items.AddAsync(item);
+            var existingItem = await _dbContext.Items
+                .FirstOrDefaultAsync(x => x.Cart_Id == item.Cart_Id && x.Product_Id == item.Product_Id);
+
+            if (existingItem != null)
+            {
+                existingItem.Quantity += item.Quantity;
+                existingItem.Price += item.Price * item.Quantity;
+            }
+            else
+            {
+                await _dbContext.Items.AddAsync(item);
+            }
+
             await _dbContext.SaveChangesAsync();
             return item;
         }
+
 
         public async Task<Item> DeleteItemFromCartAsync(long itemId, long cartId)
         {

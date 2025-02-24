@@ -9,7 +9,7 @@ namespace Cart.DAL.Interfaces
     public interface ICartRepository
     {
         Task<ShoppingCart> AddNewCartAsync(ShoppingCart cart);
-        Task<ShoppingCart> UpdateTotalPriceAsync(decimal totalPrice, long cartId);
+        Task<ShoppingCart> UpdateTotalPriceAsync(decimal itemPrice, long cartId);
         Task<ShoppingCart> GetActiveCartAsync(long cartId);
     }
 }

@@ -25,14 +25,14 @@ namespace Cart.DAL.Repositories
             return cart;
         }
 
-        public async Task<ShoppingCart> UpdateTotalPriceAsync(decimal totalPrice, long cartId)
+        public async Task<ShoppingCart> UpdateTotalPriceAsync(decimal itemPrice, long cartId)
         {
             var cart = await _dbContext.Carts.FirstOrDefaultAsync(x => x.Cart_Id == cartId);
             if (cart == null)
             {
                 throw new KeyNotFoundException("Cart not found");
             }
-            cart.TotalPrice = totalPrice;
+            cart.TotalPrice += itemPrice;
 
             _dbContext.Carts.Update(cart);
             await _dbContext.SaveChangesAsync();
