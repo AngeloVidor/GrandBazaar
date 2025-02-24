@@ -14,7 +14,7 @@ namespace Cart.BLL.DTOs
         public long Product_Id { get; set; }
         public long Buyer_Id { get; set; }
         public int Quantity { get; set; }
-        public decimal TotalPrice { get; set; }
+        public decimal Price { get; set; }
         public DateTime DateAdded { get; set; } = DateTime.UtcNow;
     }
 }

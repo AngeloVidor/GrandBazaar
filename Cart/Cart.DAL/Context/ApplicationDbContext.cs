@@ -19,6 +19,10 @@ namespace Cart.DAL.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Item>()
+                .Property(i => i.Price)
+                .HasColumnType("decimal(18,2)");
+
+            modelBuilder.Entity<ShoppingCart>()
                 .Property(i => i.TotalPrice)
                 .HasColumnType("decimal(18,2)");
         }
