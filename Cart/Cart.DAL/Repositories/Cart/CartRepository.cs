@@ -38,5 +38,12 @@ namespace Cart.DAL.Repositories
             await _dbContext.SaveChangesAsync();
             return cart;
         }
+
+        public async Task<ShoppingCart> GetActiveCartAsync(long cartId)
+        {
+            return await _dbContext.Carts.FirstOrDefaultAsync(x => x.Cart_Id == cartId);
+        }
+
     }
+
 }

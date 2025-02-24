@@ -10,5 +10,6 @@ namespace Cart.DAL.Interfaces
     {
         Task<ShoppingCart> AddNewCartAsync(ShoppingCart cart);
         Task<ShoppingCart> UpdateTotalPriceAsync(decimal totalPrice, long cartId);
+        Task<ShoppingCart> GetActiveCartAsync(long cartId);
     }
 }

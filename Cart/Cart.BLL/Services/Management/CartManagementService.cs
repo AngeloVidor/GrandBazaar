@@ -45,7 +45,6 @@ namespace Cart.BLL.Services.Management
             itemEntity.Cart_Id = await _cartHandlerService.GetCartIdByUserIdAsync(userId);
             itemEntity.Buyer_Id = await _cartHandlerService.GetBuyerIdByCartIdAsync(itemEntity.Cart_Id);
 
-
             var totalPrice = itemEntity.Price * itemEntity.Quantity;
             var subtotal = await _cartRepository.UpdateTotalPriceAsync(totalPrice, itemEntity.Cart_Id);
             Console.WriteLine($"Subtotal: {subtotal.TotalPrice}");
@@ -54,6 +53,23 @@ namespace Cart.BLL.Services.Management
             return _mapper.Map<ItemDto>(addedItem);
         }
 
+        public async Task<ItemDto> DeleteItemFromCartAsync(long itemId, long cartId, int quantity)
+        {
+            var deletedItem = await _cartManagementRepository.DeleteItemFromCartAsync(itemId, cartId);
+
+            var cart = await _cartRepository.GetActiveCartAsync(cartId);
+            if (cart == null)
+            {
+                throw new KeyNotFoundException("Cart not found");
+            }
+
+            var updatedTotalPrice = cart.TotalPrice - (deletedItem.Price * quantity);
+            Console.WriteLine($"Updated Price: {updatedTotalPrice}");
+
+            await _cartRepository.UpdateTotalPriceAsync(updatedTotalPrice, cartId);
+
+            return _mapper.Map<ItemDto>(deletedItem);
+        }
     }
 }
 
