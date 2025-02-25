@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Cart.DAL.Context;
+using Cart.DAL.Interfaces;
 using Cart.DAL.Interfaces.Management;
 using Cart.Domain.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -12,10 +13,12 @@ namespace Cart.DAL.Repositories.Management
     public class CartManagementRepository : ICartManagementRepository
     {
         private readonly ApplicationDbContext _dbContext;
+        private readonly ICartRepository _cartRepository;
 
-        public CartManagementRepository(ApplicationDbContext dbContext)
+        public CartManagementRepository(ApplicationDbContext dbContext, ICartRepository cartRepository)
         {
             _dbContext = dbContext;
+            _cartRepository = cartRepository;
         }
 
         public async Task<Item> AddItemIntoCartAsync(Item item)
@@ -38,16 +41,56 @@ namespace Cart.DAL.Repositories.Management
         }
 
 
-        public async Task<Item> DeleteItemFromCartAsync(long itemId, long cartId)
+        public async Task<Item> DeleteItemFromCartAsync(long cartId, long productId, int quantity)
         {
-            var item = await _dbContext.Items.FirstOrDefaultAsync(x => x.Cart_Id == cartId && x.Item_Id == itemId);
-            if (item == null)
+            Console.WriteLine($"Received CartId: {cartId}");
+            Console.WriteLine($"Received ProductId: {productId}");
+
+            var selectedProduct = await _dbContext.Items.FirstOrDefaultAsync(x => x.Cart_Id == cartId && x.Product_Id == productId);
+            if (selectedProduct == null)
             {
-                throw new KeyNotFoundException("Cart or item not found");
+                throw new KeyNotFoundException("Cart or item product not found");
             }
-            _dbContext.Items.Remove(item);
+
+            if (quantity <= 0)
+            {
+                throw new ArgumentException("Quantity must be greater than zero");
+            }
+
+            if (quantity > selectedProduct.Quantity)
+            {
+                throw new InvalidOperationException("Quantity to remove exceeds quantity in cart");
+            }
+
+            var actualQuantity = selectedProduct.Quantity -= quantity;
+            Console.WriteLine($"Quantity: {actualQuantity}");
+
+
+            var cart = await _dbContext.Carts.FirstOrDefaultAsync(x => x.Cart_Id == cartId);
+            if (cart == null)
+            {
+                throw new KeyNotFoundException("Cart not found");
+            }
+
+            var totalPrice = cart.TotalPrice -= selectedProduct.Price * quantity;
+            Console.WriteLine($"TotalPrice: {totalPrice}");
+
+            if (selectedProduct.Quantity == 0)
+            {
+                _dbContext.Items.Remove(selectedProduct);
+
+            }
+            else
+            {
+                _dbContext.Items.Update(selectedProduct);
+
+            }
+
+            _dbContext.Carts.Update(cart);
+
             await _dbContext.SaveChangesAsync();
-            return item;
+
+            return selectedProduct;
         }
 
         public async Task<IEnumerable<Item>> GetItemsFromCartAsync(long cartId)

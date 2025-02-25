@@ -49,7 +49,7 @@ namespace Cart.API.Controllers
         }
 
         [HttpDelete("item")]
-        public async Task<IActionResult> DeleteItemFromCart(long itemId, int quantity)
+        public async Task<IActionResult> DeleteItemFromCart(long productId, int quantity)
         {
             try
             {
@@ -67,7 +67,7 @@ namespace Cart.API.Controllers
                     Console.WriteLine("Invalid cartId");
                 }
                 System.Console.WriteLine($"CartId: {cartId}");
-                var deletedItem = await _cartService.DeleteItemFromCartAsync(itemId, cartId, quantity);
+                var deletedItem = await _cartService.DeleteItemFromCartAsync(cartId, productId, quantity);
                 if (deletedItem == null)
                 {
                     Console.WriteLine("Not deleted");
@@ -76,11 +76,11 @@ namespace Cart.API.Controllers
             }
             catch (KeyNotFoundException ex)
             {
-                return BadRequest(ex);
+                return BadRequest(new { message = ex.Message }); 
             }
             catch (Exception ex)
             {
-                return StatusCode(500, ex.Message);
+                return StatusCode(500, new { message = ex.Message });
             }
 
         }

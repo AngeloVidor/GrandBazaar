@@ -53,21 +53,9 @@ namespace Cart.BLL.Services.Management
             return _mapper.Map<ItemDto>(addedItem);
         }
 
-        public async Task<ItemDto> DeleteItemFromCartAsync(long itemId, long cartId, int quantity)
+        public async Task<ItemDto> DeleteItemFromCartAsync(long cartId, long productId, int quantity)
         {
-            var deletedItem = await _cartManagementRepository.DeleteItemFromCartAsync(itemId, cartId);
-
-            var cart = await _cartRepository.GetActiveCartAsync(cartId);
-            if (cart == null)
-            {
-                throw new KeyNotFoundException("Cart not found");
-            }
-
-            var updatedTotalPrice = cart.TotalPrice - (deletedItem.Price * quantity);
-            Console.WriteLine($"Updated Price: {updatedTotalPrice}");
-
-            await _cartRepository.UpdateTotalPriceAsync(updatedTotalPrice, cartId);
-
+            var deletedItem = await _cartManagementRepository.DeleteItemFromCartAsync(cartId, productId, quantity);
             return _mapper.Map<ItemDto>(deletedItem);
         }
     }
