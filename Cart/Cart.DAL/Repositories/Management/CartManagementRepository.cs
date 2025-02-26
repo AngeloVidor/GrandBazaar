@@ -29,7 +29,6 @@ namespace Cart.DAL.Repositories.Management
             if (existingItem != null)
             {
                 existingItem.Quantity += item.Quantity;
-                existingItem.Price += item.Price * item.Quantity;
             }
             else
             {
@@ -62,9 +61,18 @@ namespace Cart.DAL.Repositories.Management
                 throw new InvalidOperationException("Quantity to remove exceeds quantity in cart");
             }
 
-            var actualQuantity = selectedProduct.Quantity -= quantity;
-            Console.WriteLine($"Quantity: {actualQuantity}");
+            var amountToRemove = selectedProduct.Price * quantity;
 
+            selectedProduct.Quantity -= quantity;
+
+            if (selectedProduct.Quantity == 0)
+            {
+                _dbContext.Items.Remove(selectedProduct);
+            }
+            else
+            {
+                _dbContext.Items.Update(selectedProduct);
+            }
 
             var cart = await _dbContext.Carts.FirstOrDefaultAsync(x => x.Cart_Id == cartId);
             if (cart == null)
@@ -72,24 +80,10 @@ namespace Cart.DAL.Repositories.Management
                 throw new KeyNotFoundException("Cart not found");
             }
 
-            var totalPrice = cart.TotalPrice -= selectedProduct.Price * quantity;
-            Console.WriteLine($"TotalPrice: {totalPrice}");
-
-            if (selectedProduct.Quantity == 0)
-            {
-                _dbContext.Items.Remove(selectedProduct);
-
-            }
-            else
-            {
-                _dbContext.Items.Update(selectedProduct);
-
-            }
+            cart.TotalPrice -= amountToRemove;
 
             _dbContext.Carts.Update(cart);
-
             await _dbContext.SaveChangesAsync();
-
             return selectedProduct;
         }
 
