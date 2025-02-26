@@ -1,0 +1,280 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\angel\\Desktop\\GrandBazaar\\Orders\\Orders.API\\Orders.API.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\angel\\Desktop\\GrandBazaar\\Orders\\Orders.API\\Orders.API.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\angel\\Desktop\\GrandBazaar\\Orders\\Orders.API\\Orders.API.csproj",
+        "projectName": "Orders.API",
+        "projectPath": "C:\\Users\\angel\\Desktop\\GrandBazaar\\Orders\\Orders.API\\Orders.API.csproj",
+        "packagesPath": "C:\\Users\\angel\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\angel\\Desktop\\GrandBazaar\\Orders\\Orders.API\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\angel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\angel\\Desktop\\GrandBazaar\\Orders\\Orders.BLL\\Orders.BLL.csproj": {
+                "projectPath": "C:\\Users\\angel\\Desktop\\GrandBazaar\\Orders\\Orders.BLL\\Orders.BLL.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[8.0.13, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.6.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\angel\\Desktop\\GrandBazaar\\Orders\\Orders.BLL\\Orders.BLL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\angel\\Desktop\\GrandBazaar\\Orders\\Orders.BLL\\Orders.BLL.csproj",
+        "projectName": "Orders.BLL",
+        "projectPath": "C:\\Users\\angel\\Desktop\\GrandBazaar\\Orders\\Orders.BLL\\Orders.BLL.csproj",
+        "packagesPath": "C:\\Users\\angel\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\angel\\Desktop\\GrandBazaar\\Orders\\Orders.BLL\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\angel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\angel\\Desktop\\GrandBazaar\\Orders\\Orders.DAL\\Orders.DAL.csproj": {
+                "projectPath": "C:\\Users\\angel\\Desktop\\GrandBazaar\\Orders\\Orders.DAL\\Orders.DAL.csproj"
+              },
+              "C:\\Users\\angel\\Desktop\\GrandBazaar\\Orders\\Orders.Domain\\Orders.Domain.csproj": {
+                "projectPath": "C:\\Users\\angel\\Desktop\\GrandBazaar\\Orders\\Orders.Domain\\Orders.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\angel\\Desktop\\GrandBazaar\\Orders\\Orders.DAL\\Orders.DAL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\angel\\Desktop\\GrandBazaar\\Orders\\Orders.DAL\\Orders.DAL.csproj",
+        "projectName": "Orders.DAL",
+        "projectPath": "C:\\Users\\angel\\Desktop\\GrandBazaar\\Orders\\Orders.DAL\\Orders.DAL.csproj",
+        "packagesPath": "C:\\Users\\angel\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\angel\\Desktop\\GrandBazaar\\Orders\\Orders.DAL\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\angel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\angel\\Desktop\\GrandBazaar\\Orders\\Orders.Domain\\Orders.Domain.csproj": {
+                "projectPath": "C:\\Users\\angel\\Desktop\\GrandBazaar\\Orders\\Orders.Domain\\Orders.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\angel\\Desktop\\GrandBazaar\\Orders\\Orders.Domain\\Orders.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\angel\\Desktop\\GrandBazaar\\Orders\\Orders.Domain\\Orders.Domain.csproj",
+        "projectName": "Orders.Domain",
+        "projectPath": "C:\\Users\\angel\\Desktop\\GrandBazaar\\Orders\\Orders.Domain\\Orders.Domain.csproj",
+        "packagesPath": "C:\\Users\\angel\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\angel\\Desktop\\GrandBazaar\\Orders\\Orders.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\angel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
