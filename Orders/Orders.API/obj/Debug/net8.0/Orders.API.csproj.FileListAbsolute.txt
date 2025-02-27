@@ -174,3 +174,4 @@ C:\Users\angel\Desktop\GrandBazaar\Orders\Orders.API\obj\Debug\net8.0\refint\Ord
 C:\Users\angel\Desktop\GrandBazaar\Orders\Orders.API\obj\Debug\net8.0\Orders.API.pdb
 C:\Users\angel\Desktop\GrandBazaar\Orders\Orders.API\obj\Debug\net8.0\Orders.API.genruntimeconfig.cache
 C:\Users\angel\Desktop\GrandBazaar\Orders\Orders.API\obj\Debug\net8.0\ref\Orders.API.dll
+C:\Users\angel\Desktop\GrandBazaar\Orders\Orders.API\bin\Debug\net8.0\AutoMapper.dll
