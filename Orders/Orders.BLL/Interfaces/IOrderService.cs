@@ -8,6 +8,6 @@ namespace Orders.BLL.Interfaces
 {
     public interface IOrderService
     {
-        Task<OrderDto> CreateOrderAsync(OrderDto order);
+        Task<OrderDto> CreateOrderAsync(OrderDto order, long userId);
     }
 }

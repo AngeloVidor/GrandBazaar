@@ -20,14 +20,15 @@ namespace Orders.API.Controllers
         }
 
         [HttpPost("order")]
-        public async Task<IActionResult> CreateOrder()
+        public async Task<IActionResult> CreateOrder(OrderDto order)
         {
+
+            long userId = long.Parse(HttpContext.Items["userId"].ToString());
+
             try
             {
-                //order.Costumer_Id: Enviar o UserId para o Buyer, receber o Buyer_Id e adicionar ao Costumer_Id;
-                var userId = HttpContext.Items["userId"].ToString();
-                Console.WriteLine($"Received UserId: {userId}");
-                return Ok("Hello, world!!");
+                var addedOrder = await _orderService.CreateOrderAsync(order, userId);
+                return Ok(addedOrder);
             }
             catch (Exception ex)
             {

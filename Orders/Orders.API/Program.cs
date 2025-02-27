@@ -3,6 +3,8 @@ using Microsoft.OpenApi.Models;
 using Orders.API.Middlewares;
 using Orders.BLL.Interfaces;
 using Orders.BLL.Mapping;
+using Orders.BLL.Messaging.Costumer.Interfaces;
+using Orders.BLL.Messaging.Costumer.Services;
 using Orders.BLL.Services;
 using Orders.DAL.Context;
 using Orders.DAL.Interfaces;
@@ -56,6 +58,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IUserIdentificationPub, UserIdentificationPub>();
+
 
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
