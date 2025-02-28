@@ -27,8 +27,10 @@ namespace Orders.BLL.Services
 
         public async Task<OrderDto> CreateOrderAsync(OrderDto order, long userId)
         {
-            var orderEntity = _mapper.Map<Order>(order);
-            _publisher.Publish(userId);
+            //var orderEntity = _mapper.Map<Order>(order);
+            var buyerId = await _publisher.GetCostumerIdAsync(userId);
+            order.Costumer_Id = buyerId;
+            Console.WriteLine($"BuyerID: {buyerId}");
 
             //var addedOrder = await _orderRepository.CreateOrderAsync(orderEntity);
             //return _mapper.Map<OrderDto>(addedOrder);

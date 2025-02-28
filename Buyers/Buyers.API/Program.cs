@@ -5,6 +5,8 @@ using Buyers.BLL.Interfaces.Management;
 using Buyers.BLL.Interfaces.S3;
 using Buyers.BLL.Mapping;
 using Buyers.BLL.Messaging.Background;
+using Buyers.BLL.Messaging.Costumer.Interfaces;
+using Buyers.BLL.Messaging.Costumer.Services;
 using Buyers.BLL.Messaging.Events.Interfaces;
 using Buyers.BLL.Messaging.Events.Services;
 using Buyers.BLL.Services;
@@ -75,7 +77,9 @@ builder.Services.AddScoped<IS3StorageService, S3StorageService>();
 builder.Services.AddScoped<IBuyerManagementService, BuyerManagementService>();
 
 builder.Services.AddScoped<IBuyerIdentificationPublisher, BuyerIdentificationPublisher>();
-builder.Services.AddSingleton<IHostedService, TransferCartToBuyerBackgroundService>();
+builder.Services.AddSingleton<IUserIdentificationSub, UserIdentificationSub>();
+//builder.Services.AddSingleton<IHostedService, Background>();
+builder.Services.AddHostedService<Background>();
 
 
 builder.Services.AddDefaultAWSOptions(builder.Configuration.GetAWSOptions());

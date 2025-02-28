@@ -58,8 +58,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IOrderService, OrderService>();
-builder.Services.AddScoped<IUserIdentificationPub, UserIdentificationPub>();
-
+builder.Services.AddSingleton<IUserIdentificationPub, UserIdentificationPub>();
 
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));

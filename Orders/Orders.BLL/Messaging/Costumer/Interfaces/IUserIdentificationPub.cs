@@ -8,6 +8,7 @@ namespace Orders.BLL.Messaging.Costumer.Interfaces
 {
     public interface IUserIdentificationPub
     {
-        void Publish(long userId);
+        Task<long> Publish(long userId);
+        Task<long> GetCostumerIdAsync(long userId);
     }
 }
