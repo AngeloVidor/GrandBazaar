@@ -13,6 +13,7 @@ namespace Orders.BLL.Mapping
         public MappingProfile()
         {
             CreateMap<Order, OrderDto>().ReverseMap();
+            CreateMap<OrderItem, OrderItemDto>().ReverseMap();
         }
     }
 }

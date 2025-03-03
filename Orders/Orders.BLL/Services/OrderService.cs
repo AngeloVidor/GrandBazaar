@@ -6,6 +6,7 @@ using AutoMapper;
 using Orders.BLL.DTOs;
 using Orders.BLL.Interfaces;
 using Orders.BLL.Messaging.Costumer.Interfaces;
+using Orders.BLL.Messaging.Products.Interfaces;
 using Orders.DAL.Interfaces;
 using Orders.Domain.Entities;
 
@@ -16,13 +17,15 @@ namespace Orders.BLL.Services
         private readonly IOrderRepository _orderRepository;
         private readonly IMapper _mapper;
         private readonly IUserIdentificationPub _publisher;
+        private readonly IProductsRequestPublisher _productsRequest;
 
 
-        public OrderService(IOrderRepository orderRepository, IMapper mapper, IUserIdentificationPub publisher)
+        public OrderService(IOrderRepository orderRepository, IMapper mapper, IUserIdentificationPub publisher, IProductsRequestPublisher productsRequest)
         {
             _orderRepository = orderRepository;
             _mapper = mapper;
             _publisher = publisher;
+            _productsRequest = productsRequest;
         }
 
         public async Task<OrderDto> CreateOrderAsync(OrderDto order, long userId)
@@ -30,7 +33,10 @@ namespace Orders.BLL.Services
             //var orderEntity = _mapper.Map<Order>(order);
             var buyerId = await _publisher.GetCostumerIdAsync(userId);
             order.Costumer_Id = buyerId;
-            Console.WriteLine($"BuyerID: {buyerId}");
+
+            await _productsRequest.Publish(buyerId);
+            Console.WriteLine("sent");
+
 
             //var addedOrder = await _orderRepository.CreateOrderAsync(orderEntity);
             //return _mapper.Map<OrderDto>(addedOrder);

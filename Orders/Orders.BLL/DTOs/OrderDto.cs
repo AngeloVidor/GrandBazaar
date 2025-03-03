@@ -11,11 +11,12 @@ namespace Orders.BLL.DTOs
     {
         [Key]
         public long Order_Id { get; set; }
-        public long Costumer_Id { get; set; } //buyer_id
+        public long Costumer_Id { get; set; } 
         public decimal TotalAmount { get; set; }
         public OrderStatus Status { get; set; }
         public PaymentStatus PaymentStatus { get; set; }
         public DateTime CreatedAt { get; set; }
         public List<OrderItem> Products { get; set; }
+
     }
 }

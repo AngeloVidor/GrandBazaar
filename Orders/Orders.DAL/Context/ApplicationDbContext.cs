@@ -14,6 +14,7 @@ namespace Orders.DAL.Context
 
         }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> Items { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

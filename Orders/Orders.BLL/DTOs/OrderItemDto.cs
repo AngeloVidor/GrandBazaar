@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Orders.Domain.Entities
+namespace Orders.BLL.DTOs
 {
-    public class OrderItem
+    public class OrderItemDto
     {
         [Key]
         public long OrderItem_Id { get; set; }
@@ -14,8 +14,6 @@ namespace Orders.Domain.Entities
         public string ProductName { get; set; }
         public int Quantity { get; set; }
         public decimal Price { get; set; }
-
         public long Order_Id { get; set; }
-
     }
 }
