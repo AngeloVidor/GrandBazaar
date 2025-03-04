@@ -10,6 +10,8 @@ using Products.BLL.Messaging.Events.Interfaces;
 using Products.BLL.Messaging.Events.Interfaces.BuyerIdentification;
 using Products.BLL.Messaging.Events.Services;
 using Products.BLL.Messaging.Events.Services.BuyerIdentification;
+using Products.BLL.Messaging.Interfaces.ProductHandler;
+using Products.BLL.Messaging.Services.ProductHandler;
 using Products.BLL.Services;
 using Products.BLL.Services.Filters;
 using Products.BLL.Services.Provider;
@@ -85,6 +87,7 @@ builder.Services.AddScoped<IProductValidatorConsumer, ProductValidatorConsumer>(
 
 builder.Services.AddSingleton<IHostedService, ServiceBackground>();
 
+builder.Services.AddSingleton<IProductHandlerSub, ProductHandlerSub>();
 
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));

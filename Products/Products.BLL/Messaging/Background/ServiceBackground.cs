@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Products.BLL.Messaging.Events.Interfaces.BuyerIdentification;
+using Products.BLL.Messaging.Interfaces.ProductHandler;
 
 namespace Products.BLL.Messaging.Background
 {
@@ -19,7 +20,9 @@ namespace Products.BLL.Messaging.Background
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             var consumer = _serviceScopeFactory.CreateScope().ServiceProvider.GetRequiredService<IProductValidatorConsumer>();
+            var productHandler = _serviceScopeFactory.CreateScope().ServiceProvider.GetRequiredService<IProductHandlerSub>();
             consumer.Consume();
+            await productHandler.Consume();
         }
     }
 }

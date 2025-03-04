@@ -37,14 +37,19 @@ namespace Orders.BLL.Services
 
             Console.WriteLine("sending...");
             var response = await _productsRequest.Publish(buyerId);
-            if (response != null)
+            if (response != null && response.Products.Any())
             {
-                foreach (var product in response.Products)
+                order.Products = response.Products.Select(product => new OrderItem
                 {
-                    System.Console.WriteLine($"Product: {product.ToString()}");
-                }
+                    Product_Id = product.Product_Id,
+                    ProductName = product.ProductName,
+                    Quantity = product.Quantity,
+                    Price = product.Price,
+                    Order_Id = order.Order_Id
+
+                }).ToList();
             }
-            
+
             //var addedOrder = await _orderRepository.CreateOrderAsync(orderEntity);
             //return _mapper.Map<OrderDto>(addedOrder);
             return order;

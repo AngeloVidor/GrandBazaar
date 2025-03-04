@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Azure;
 using Cart.BLL.Interfaces.Handler;
 using Cart.BLL.Interfaces.Management;
+using Cart.BLL.Interfaces.ProductHandler;
 using Cart.BLL.Messaging.Interfaces.Products;
 using Cart.BLL.Messaging.Messages.Products;
 using Microsoft.Extensions.DependencyInjection;
@@ -46,7 +47,8 @@ namespace Cart.BLL.Messaging.Services.Products
                     using (var scope = _serviceScopeFactory.CreateScope())
                     {
                         var _cartHandler = scope.ServiceProvider.GetRequiredService<ICartHandlerService>();
-                        //var _cartManagement = scope.ServiceProvider.GetRequiredService<ICartManagementService>();
+                        var _productHandler = scope.ServiceProvider.GetRequiredService<IProductHandlerService>();
+
 
                         var body = ea.Body.ToArray();
                         var bodyMessage = Encoding.UTF8.GetString(body);
@@ -71,15 +73,30 @@ namespace Cart.BLL.Messaging.Services.Products
                             Console.WriteLine("Any item found");
                             return;
                         }
-                       
-                        var requestedProducts = items.Select(item => new RequestedProducts
-                        {
-                            Product_Id = item.Product_Id,
-                            ProductName = item.ProductName,
-                            Quantity = item.Quantity,
-                            Price = item.Price
-                        }).ToList();
 
+                        var allProducts = await _productHandler.GetAllProductsAsync();
+
+                        var requestedProducts = items.Select(item =>
+                        {
+                            var product = allProducts.FirstOrDefault(p => p.Product_Id == item.Product_Id);
+                            if (product != null)
+                            {
+                                return new RequestedProducts
+                                {
+                                    Product_Id = item.Product_Id,
+                                    ProductName = product.ProductName,
+                                    Quantity = item.Quantity,
+                                    Price = item.Price
+                                };
+                            }
+                            return null;
+                        }).Where(p => p != null).ToList();
+
+                        if (!requestedProducts.Any())
+                        {
+                            Console.WriteLine("No products found for cart items");
+                            return;
+                        }
 
                         var response = new ProductResponse
                         {

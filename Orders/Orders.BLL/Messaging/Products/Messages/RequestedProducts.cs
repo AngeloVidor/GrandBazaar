@@ -12,9 +12,9 @@ namespace Orders.BLL.Messaging.Products.Messages
         public int Quantity { get; set; }
         public decimal Price { get; set; }
 
-        public override string ToString()
-        {
-            return $"{ProductName} - {Price:C}";
-        }
+        // public override string ToString()
+        // {
+        //     return $"{ProductName} - {Price:C}";
+        // }
     }
 }
