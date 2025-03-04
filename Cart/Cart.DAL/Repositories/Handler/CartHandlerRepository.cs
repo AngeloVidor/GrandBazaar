@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Cart.DAL.Context;
 using Cart.DAL.Interfaces.Handler;
+using Cart.Domain.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Cart.DAL.Repositories.Handler
@@ -40,6 +41,20 @@ namespace Cart.DAL.Repositories.Handler
             {
                 return false;
             }
+        }
+
+        public async Task<long> GetCartIdByCostumerIdAsync(long consumerId)
+        {
+            var cart = await _dbContext.Carts.FirstOrDefaultAsync(x => x.Buyer_Id == consumerId);
+            Console.WriteLine("*********");
+            Console.WriteLine($"CartID: {cart.Cart_Id} ******");
+            Console.WriteLine("*********");
+            return cart.Cart_Id;
+        }
+
+        public async Task<List<Item>> GetItemsFromCartByCartIdAsync(long cartId)
+        {
+            return await _dbContext.Items.Where(x => x.Cart_Id == cartId).ToListAsync();
         }
     }
 }

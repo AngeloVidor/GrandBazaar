@@ -25,7 +25,7 @@ namespace Cart.API.Controllers
         }
 
         [HttpPost("add-item")]
-        public async Task<IActionResult> AddItemIntoCart([FromBody] ItemDto item)
+        public async Task<IActionResult> AddItemIntoCart([FromBody] CreatorItemDto item)
         {
             if (!ModelState.IsValid)
             {

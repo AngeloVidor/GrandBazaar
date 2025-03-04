@@ -3,11 +3,14 @@ using Cart.BLL.Interfaces;
 using Cart.BLL.Interfaces.Handler;
 using Cart.BLL.Interfaces.Management;
 using Cart.BLL.Mapping;
+using Cart.BLL.Messaging.Background;
 using Cart.BLL.Messaging.Events.Interfaces;
 using Cart.BLL.Messaging.Events.Interfaces.ProductValidator;
 using Cart.BLL.Messaging.Events.Services;
 using Cart.BLL.Messaging.Events.Services.ProductValidator;
+using Cart.BLL.Messaging.Interfaces.Products;
 using Cart.BLL.Messaging.Messages.ProductValidator;
+using Cart.BLL.Messaging.Services.Products;
 using Cart.BLL.Services;
 using Cart.BLL.Services.Handler;
 using Cart.BLL.Services.Management;
@@ -81,6 +84,11 @@ builder.Services.AddScoped<ICartRepository, CartRepository>();
 builder.Services.AddScoped<ICartService, CartService>();
 builder.Services.AddSingleton<IBuyerIdentificationPublisher, BuyerIdentificationPublisher>();
 builder.Services.AddScoped<TaskCompletionSource<long>>();
+
+
+builder.Services.AddSingleton<IProductsRequestSubscriber, ProductsRequestSubscriber>();
+builder.Services.AddHostedService<ServiceBackground>();
+
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 

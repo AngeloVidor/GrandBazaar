@@ -30,7 +30,7 @@ namespace Cart.BLL.Services.Management
             _cartRepository = cartRepository;
         }
 
-        public async Task<ItemDto> AddItemIntoCartAsync(ItemDto item, long userId)
+        public async Task<CreatorItemDto> AddItemIntoCartAsync(CreatorItemDto item, long userId)
         {
             var itemEntity = _mapper.Map<Item>(item);
 
@@ -50,13 +50,19 @@ namespace Cart.BLL.Services.Management
             Console.WriteLine($"Subtotal: {subtotal.TotalPrice}");
 
             var addedItem = await _cartManagementRepository.AddItemIntoCartAsync(itemEntity);
-            return _mapper.Map<ItemDto>(addedItem);
+            return _mapper.Map<CreatorItemDto>(addedItem);
         }
 
-        public async Task<ItemDto> DeleteItemFromCartAsync(long cartId, long productId, int quantity)
+        public async Task<CreatorItemDto> DeleteItemFromCartAsync(long cartId, long productId, int quantity)
         {
             var deletedItem = await _cartManagementRepository.DeleteItemFromCartAsync(cartId, productId, quantity);
-            return _mapper.Map<ItemDto>(deletedItem);
+            return _mapper.Map<CreatorItemDto>(deletedItem);
+        }
+
+        public async Task<IEnumerable<CreatorItemDto>> GetItemsFromCartAsync(long cartId)
+        {
+            var items = await _cartManagementRepository.GetItemsFromCartAsync(cartId);
+            return _mapper.Map<List<CreatorItemDto>>(items);
         }
     }
 }

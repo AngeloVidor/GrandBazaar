@@ -32,12 +32,19 @@ namespace Orders.BLL.Services
         {
             //var orderEntity = _mapper.Map<Order>(order);
             var buyerId = await _publisher.GetCostumerIdAsync(userId);
+            Console.WriteLine("sent");
             order.Costumer_Id = buyerId;
 
-            await _productsRequest.Publish(buyerId);
-            Console.WriteLine("sent");
-
-
+            Console.WriteLine("sending...");
+            var response = await _productsRequest.Publish(buyerId);
+            if (response != null)
+            {
+                foreach (var product in response.Products)
+                {
+                    System.Console.WriteLine($"Product: {product.ToString()}");
+                }
+            }
+            
             //var addedOrder = await _orderRepository.CreateOrderAsync(orderEntity);
             //return _mapper.Map<OrderDto>(addedOrder);
             return order;

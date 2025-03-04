@@ -177,3 +177,6 @@ C:\Users\angel\Desktop\GrandBazaar\Cart\Cart.API\obj\Debug\net8.0\refint\Cart.AP
 C:\Users\angel\Desktop\GrandBazaar\Cart\Cart.API\obj\Debug\net8.0\Cart.API.pdb
 C:\Users\angel\Desktop\GrandBazaar\Cart\Cart.API\obj\Debug\net8.0\Cart.API.genruntimeconfig.cache
 C:\Users\angel\Desktop\GrandBazaar\Cart\Cart.API\obj\Debug\net8.0\ref\Cart.API.dll
+C:\Users\angel\Desktop\GrandBazaar\Cart\Cart.API\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+C:\Users\angel\Desktop\GrandBazaar\Cart\Cart.API\bin\Debug\net8.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\angel\Desktop\GrandBazaar\Cart\Cart.API\bin\Debug\net8.0\Microsoft.Extensions.Hosting.Abstractions.dll

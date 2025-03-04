@@ -13,7 +13,9 @@ namespace Cart.BLL.Mapping
         public MappingProfile()
         {
             CreateMap<ShoppingCart, ShoppingCartDto>().ReverseMap();
+            CreateMap<Item, CreatorItemDto>().ReverseMap();
             CreateMap<Item, ItemDto>().ReverseMap();
+
 
         }
     }

@@ -8,8 +8,9 @@ namespace Cart.BLL.Interfaces.Management
 {
     public interface ICartManagementService
     {
-        Task<ItemDto> AddItemIntoCartAsync(ItemDto item, long userId);
-        Task<ItemDto> DeleteItemFromCartAsync(long cartId, long productId, int quantity);
+        Task<CreatorItemDto> AddItemIntoCartAsync(CreatorItemDto item, long userId);
+        Task<CreatorItemDto> DeleteItemFromCartAsync(long cartId, long productId, int quantity);
+        Task<IEnumerable<CreatorItemDto>> GetItemsFromCartAsync(long cartId);
 
     }
 }
