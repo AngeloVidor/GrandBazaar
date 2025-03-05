@@ -21,6 +21,10 @@ namespace Orders.DAL.Context
             modelBuilder.Entity<Order>()
                            .Property(e => e.TotalAmount)
                             .HasColumnType("decimal(18,2)");
+
+            modelBuilder.Entity<OrderItem>()
+           .Property(e => e.Price)
+            .HasColumnType("decimal(18,2)");
         }
     }
 }

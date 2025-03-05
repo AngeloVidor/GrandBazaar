@@ -8,6 +8,6 @@ namespace Orders.DAL.Interfaces
 {
     public interface IOrderItemRepository
     {
-        Task<OrderItem> SaveOrderItemsAsync(OrderItem orderItem);
+        Task<List<OrderItem>> SaveOrderItemsAsync(List<OrderItem> orderItem);
     }
 }

@@ -17,9 +17,9 @@ namespace Orders.DAL.Repositories
             _dbContext = dbContext;
         }
 
-        public async Task<OrderItem> SaveOrderItemsAsync(OrderItem orderItem)
+        public async Task<List<OrderItem>> SaveOrderItemsAsync(List<OrderItem> orderItem)
         {
-            await _dbContext.Items.AddAsync(orderItem);
+            await _dbContext.Items.AddRangeAsync(orderItem);
             await _dbContext.SaveChangesAsync();
             return orderItem;
         }

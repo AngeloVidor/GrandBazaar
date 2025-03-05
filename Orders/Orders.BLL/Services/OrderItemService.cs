@@ -21,11 +21,11 @@ namespace Orders.BLL.Services
             _mapper = mapper;
         }
 
-        public async Task<OrderItemDto> SaveOrderItemsAsync(OrderItemDto orderItem)
+        public async Task<List<OrderItemDto>> SaveOrderItemsAsync(List<OrderItemDto> orderItem)
         {
-            var itemEntity = _mapper.Map<OrderItem>(orderItem);
+            var itemEntity = _mapper.Map<List<OrderItem>>(orderItem);
             var result = await _orderItemRepository.SaveOrderItemsAsync(itemEntity);
-            return _mapper.Map<OrderItemDto>(result);
+            return _mapper.Map<List<OrderItemDto>>(result);
         }
 
     }

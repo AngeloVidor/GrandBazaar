@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -15,6 +16,8 @@ namespace Orders.Domain.Entities
         public int Quantity { get; set; }
         public decimal Price { get; set; }
         public long Order_Id { get; set; }
+        [ForeignKey("Order_Id")]
+        public Order Order { get; set; }
 
     }
 }

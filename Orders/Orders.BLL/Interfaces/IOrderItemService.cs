@@ -8,7 +8,6 @@ namespace Orders.BLL.Interfaces
 {
     public interface IOrderItemService
     {
-        Task<OrderItemDto> SaveOrderItemsAsync(OrderItemDto orderItem);
-
+        Task<List<OrderItemDto>> SaveOrderItemsAsync(List<OrderItemDto> orderItem);
     }
 }

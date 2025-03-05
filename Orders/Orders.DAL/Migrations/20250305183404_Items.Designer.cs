@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Orders.DAL.Context;
 
@@ -11,9 +12,11 @@ using Orders.DAL.Context;
 namespace Orders.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250305183404_Items")]
+    partial class Items
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -61,6 +64,9 @@ namespace Orders.DAL.Migrations
                     b.Property<long>("Order_Id")
                         .HasColumnType("bigint");
 
+                    b.Property<long?>("Order_Id1")
+                        .HasColumnType("bigint");
+
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
@@ -76,20 +82,16 @@ namespace Orders.DAL.Migrations
 
                     b.HasKey("OrderItem_Id");
 
-                    b.HasIndex("Order_Id");
+                    b.HasIndex("Order_Id1");
 
                     b.ToTable("Items");
                 });
 
             modelBuilder.Entity("Orders.Domain.Entities.OrderItem", b =>
                 {
-                    b.HasOne("Orders.Domain.Entities.Order", "Order")
+                    b.HasOne("Orders.Domain.Entities.Order", null)
                         .WithMany("Products")
-                        .HasForeignKey("Order_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Order");
+                        .HasForeignKey("Order_Id1");
                 });
 
             modelBuilder.Entity("Orders.Domain.Entities.Order", b =>
