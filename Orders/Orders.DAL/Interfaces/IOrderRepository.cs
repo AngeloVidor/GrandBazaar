@@ -9,5 +9,6 @@ namespace Orders.DAL.Interfaces
     public interface IOrderRepository
     {
         Task<Order> CreateOrderAsync(Order order);
+        Task<IEnumerable<Order>> GetMyOrdersAsync(long costumerId);
     }
 }

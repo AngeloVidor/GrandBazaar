@@ -33,7 +33,7 @@ namespace Orders.BLL.Services
         public async Task<OrderDto> CreateOrderAsync(OrderDto order, long userId)
         {
             var orderEntity = _mapper.Map<Order>(order);
-            
+
             var buyerId = await _publisher.GetCostumerIdAsync(userId);
 
             orderEntity.Costumer_Id = buyerId;
@@ -58,6 +58,13 @@ namespace Orders.BLL.Services
 
             await _orderItemService.SaveOrderItemsAsync(_mapper.Map<List<OrderItemDto>>(orderEntity.Products));
             return _mapper.Map<OrderDto>(addedOrder);
+        }
+
+        public async Task<IEnumerable<OrderDto>> GetMyOrdersAsync(long userId)
+        {
+            long costumerId = await _publisher.GetCostumerIdAsync(userId);
+            var orders = await _orderRepository.GetMyOrdersAsync(costumerId);
+            return _mapper.Map<List<OrderDto>>(orders);
         }
     }
 }

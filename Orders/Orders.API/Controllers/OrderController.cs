@@ -35,5 +35,22 @@ namespace Orders.API.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
+        [HttpGet("orders")]
+        public async Task<IActionResult> MyOrders()
+        {
+            try
+            {
+                var userId = long.Parse(HttpContext.Items["userId"].ToString());
+
+                var orders = await _orderService.GetMyOrdersAsync(userId);
+                return Ok(orders);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.InnerException);
+            }
+
+        }
     }
 }
