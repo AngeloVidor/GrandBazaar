@@ -10,5 +10,6 @@ namespace Orders.BLL.Interfaces
     {
         Task<OrderDto> CreateOrderAsync(OrderDto order, long userId);
         Task<IEnumerable<OrderDto>> GetMyOrdersAsync(long costumerId);
+        Task<OrderDto> GetOrderByIdAsync(long orderId);
     }
 }

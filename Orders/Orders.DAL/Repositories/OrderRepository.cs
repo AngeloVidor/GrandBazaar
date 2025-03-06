@@ -30,5 +30,11 @@ namespace Orders.DAL.Repositories
             return await _dbContext.Orders.Where(c => c.Costumer_Id == costumerId)
                         .Include(o => o.Products).ToListAsync();
         }
+
+        public async Task<Order> GetOrderByIdAsync(long orderId)
+        {
+            return await _dbContext.Orders.Include(p => p.Products)
+                .FirstOrDefaultAsync(o => o.Order_Id == orderId);
+        }
     }
 }

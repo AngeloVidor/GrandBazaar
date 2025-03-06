@@ -50,7 +50,20 @@ namespace Orders.API.Controllers
             {
                 return StatusCode(500, ex.InnerException);
             }
+        }
 
+        [HttpGet("id")]
+        public async Task<IActionResult> GetOrderById(long orderId)
+        {
+            try
+            {
+                var order = await _orderService.GetOrderByIdAsync(orderId);
+                return Ok(order);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
     }
 }

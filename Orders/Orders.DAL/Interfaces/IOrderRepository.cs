@@ -10,5 +10,6 @@ namespace Orders.DAL.Interfaces
     {
         Task<Order> CreateOrderAsync(Order order);
         Task<IEnumerable<Order>> GetMyOrdersAsync(long costumerId);
+        Task<Order> GetOrderByIdAsync(long orderId);
     }
 }

@@ -66,5 +66,11 @@ namespace Orders.BLL.Services
             var orders = await _orderRepository.GetMyOrdersAsync(costumerId);
             return _mapper.Map<List<OrderDto>>(orders);
         }
+
+        public async Task<OrderDto> GetOrderByIdAsync(long orderId)
+        {
+            var order = await _orderRepository.GetOrderByIdAsync(orderId);
+            return _mapper.Map<OrderDto>(order);
+        }
     }
 }
