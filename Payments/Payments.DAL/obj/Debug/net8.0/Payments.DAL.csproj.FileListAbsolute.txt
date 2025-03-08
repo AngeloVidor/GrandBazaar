@@ -1,0 +1,16 @@
+C:\Users\angel\Desktop\GrandBazaar\Payments\Payments.DAL\bin\Debug\net8.0\Payments.DAL.deps.json
+C:\Users\angel\Desktop\GrandBazaar\Payments\Payments.DAL\bin\Debug\net8.0\Payments.DAL.dll
+C:\Users\angel\Desktop\GrandBazaar\Payments\Payments.DAL\bin\Debug\net8.0\Payments.DAL.pdb
+C:\Users\angel\Desktop\GrandBazaar\Payments\Payments.DAL\bin\Debug\net8.0\Payments.Domain.dll
+C:\Users\angel\Desktop\GrandBazaar\Payments\Payments.DAL\bin\Debug\net8.0\Payments.Domain.pdb
+C:\Users\angel\Desktop\GrandBazaar\Payments\Payments.DAL\obj\Debug\net8.0\Payments.DAL.csproj.AssemblyReference.cache
+C:\Users\angel\Desktop\GrandBazaar\Payments\Payments.DAL\obj\Debug\net8.0\Payments.DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\angel\Desktop\GrandBazaar\Payments\Payments.DAL\obj\Debug\net8.0\Payments.DAL.AssemblyInfoInputs.cache
+C:\Users\angel\Desktop\GrandBazaar\Payments\Payments.DAL\obj\Debug\net8.0\Payments.DAL.AssemblyInfo.cs
+C:\Users\angel\Desktop\GrandBazaar\Payments\Payments.DAL\obj\Debug\net8.0\Payments.DAL.csproj.CoreCompileInputs.cache
+C:\Users\angel\Desktop\GrandBazaar\Payments\Payments.DAL\obj\Debug\net8.0\Payments.DAL.sourcelink.json
+C:\Users\angel\Desktop\GrandBazaar\Payments\Payments.DAL\obj\Debug\net8.0\Payments.817BC3E6.Up2Date
+C:\Users\angel\Desktop\GrandBazaar\Payments\Payments.DAL\obj\Debug\net8.0\Payments.DAL.dll
+C:\Users\angel\Desktop\GrandBazaar\Payments\Payments.DAL\obj\Debug\net8.0\refint\Payments.DAL.dll
+C:\Users\angel\Desktop\GrandBazaar\Payments\Payments.DAL\obj\Debug\net8.0\Payments.DAL.pdb
+C:\Users\angel\Desktop\GrandBazaar\Payments\Payments.DAL\obj\Debug\net8.0\ref\Payments.DAL.dll
