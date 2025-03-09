@@ -45,3 +45,9 @@ C:\Users\angel\Desktop\GrandBazaar\Payments\Payments.API\obj\Debug\net8.0\refint
 C:\Users\angel\Desktop\GrandBazaar\Payments\Payments.API\obj\Debug\net8.0\Payments.API.pdb
 C:\Users\angel\Desktop\GrandBazaar\Payments\Payments.API\obj\Debug\net8.0\Payments.API.genruntimeconfig.cache
 C:\Users\angel\Desktop\GrandBazaar\Payments\Payments.API\obj\Debug\net8.0\ref\Payments.API.dll
+C:\Users\angel\Desktop\GrandBazaar\Payments\Payments.API\bin\Debug\net8.0\Microsoft.Bcl.Memory.dll
+C:\Users\angel\Desktop\GrandBazaar\Payments\Payments.API\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\angel\Desktop\GrandBazaar\Payments\Payments.API\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\angel\Desktop\GrandBazaar\Payments\Payments.API\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\angel\Desktop\GrandBazaar\Payments\Payments.API\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\angel\Desktop\GrandBazaar\Payments\Payments.API\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll

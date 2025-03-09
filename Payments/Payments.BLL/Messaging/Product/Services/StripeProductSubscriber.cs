@@ -52,7 +52,6 @@ namespace Payments.BLL.Messaging.Product.Services
                         var request = JsonConvert.DeserializeObject<StripeProductRequest>(requestBody);
                         var replyTo = ea.BasicProperties.ReplyTo;
 
-
                         var product = new AppProduct
                         {
                             Product_Id = request.Product_Id,
@@ -89,7 +88,6 @@ namespace Payments.BLL.Messaging.Product.Services
 
         public Task Publish(StripeProductResponse response, string replyTo)
         {
-            Console.WriteLine("Vou publicar");
             var body = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(response));
             var properties = _channel.CreateBasicProperties();
 
@@ -97,7 +95,6 @@ namespace Payments.BLL.Messaging.Product.Services
             properties.ReplyTo = replyTo;
 
             _channel.BasicPublish(exchange: "", routingKey: replyTo, basicProperties: properties, body: body);
-            Console.WriteLine("Publiquei de vorta");
             return Task.CompletedTask;
         }
     }

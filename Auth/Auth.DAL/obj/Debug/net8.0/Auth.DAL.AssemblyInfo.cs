@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Auth.DAL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5d64eb8b1f7d2d3d7a8dab5ca74cd63c8170e5b2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bb15c5b4f224371549866a594f0391c8896a5f0d")]
 [assembly: System.Reflection.AssemblyProductAttribute("Auth.DAL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Auth.DAL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -20,7 +20,7 @@ namespace Payments.BLL.Messaging.Background
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             var _stripeProduct = _serviceScopeFactory.CreateScope().ServiceProvider.GetRequiredService<IStripeProductSubscriber>();
-            _stripeProduct.Consume();
+            await _stripeProduct.Consume();
         }
     }
 }

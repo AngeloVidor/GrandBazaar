@@ -64,9 +64,6 @@ namespace Cart.BLL.Messaging.Services.Products
                             return;
                         }
 
-                        //um dos problemas é que esse repositório tá mapeado para uma entidade de outro contexto
-                        //vou precisar criar outro serviço pra retornar os objetos dos produtos do carrinho, se comunicando com o micro de products
-                        //aka.............. mais brokers.......
                         var items = await _cartHandler.GetItemsFromCartByCartIdAsync(cartId);
                         if (items == null)
                         {

@@ -9,9 +9,11 @@ using Cart.BLL.Messaging.Events.Interfaces;
 using Cart.BLL.Messaging.Events.Interfaces.ProductValidator;
 using Cart.BLL.Messaging.Events.Services;
 using Cart.BLL.Messaging.Events.Services.ProductValidator;
+using Cart.BLL.Messaging.Interfaces.Payments;
 using Cart.BLL.Messaging.Interfaces.ProductHandler;
 using Cart.BLL.Messaging.Interfaces.Products;
 using Cart.BLL.Messaging.Messages.ProductValidator;
+using Cart.BLL.Messaging.Services.Payments;
 using Cart.BLL.Messaging.Services.ProductHandler;
 using Cart.BLL.Messaging.Services.Products;
 using Cart.BLL.Services;
@@ -91,10 +93,13 @@ builder.Services.AddScoped<TaskCompletionSource<long>>();
 
 
 builder.Services.AddSingleton<IProductsRequestSubscriber, ProductsRequestSubscriber>();
+
 builder.Services.AddHostedService<ServiceBackground>();
 
 builder.Services.AddSingleton<IProductHandlerPublisher, ProductHandlerPublisher>();
 builder.Services.AddScoped<IProductHandlerService, ProductHandlerService>();
+
+builder.Services.AddSingleton<IProductRequestSubscriber, ProductRequestSubscriber>();
 
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
